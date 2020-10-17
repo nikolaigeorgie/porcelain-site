@@ -7,8 +7,7 @@ import Shop from "../Shop"
 export default function View(props) {
   return (
     <>
-      <Helmet title="View" />
-      Porcelain Site
+      <Helmet title="Porcelain Site" />
       <Shop />
     </>
   )

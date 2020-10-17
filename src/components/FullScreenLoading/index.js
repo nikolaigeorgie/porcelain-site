@@ -1,6 +1,8 @@
 import React from "react"
 import styled, { keyframes } from "styled-components/macro"
 
+import PorcelainBG from "../Images/Porcelain_Background.png"
+
 const scrollGradient = keyframes`
   0% {
     background-position: 0 50%
@@ -21,10 +23,13 @@ const FullScreenWrapper = styled.div`
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 10;
+  z-index: -1;
 
-  background: linear-gradient(135deg, rgba(13, 23, 187, 0.93), #a90a77);
-  background-size: 400% 400%;
+  background-image: url(${PorcelainBG});
+  background-size: cover;
+
+  // background: linear-gradient(135deg, rgba(13, 23, 187, 0.93), #a90a77);
+  // background-size: 400% 400%;
 
   animation: ${scrollGradient} 40s ease infinite;
 

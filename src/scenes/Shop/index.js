@@ -2,12 +2,16 @@ import React, { useContext } from "react"
 import styled from "styled-components/macro"
 
 import ProductListing from "components/ProductListing"
+import FullScreenLoading from "components/FullScreenLoading"
 import { ShopifyContext } from "services/shopify"
+
+import Landing from "../Landing"
 
 const LoadingText = styled.h1`
   width: 100%;
   height: 100vh;
-  background: white;
+  position: absolute;
+  margin: 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -23,12 +27,18 @@ export default function Shop(props) {
   const { products } = useContext(ShopifyContext)
 
   if (!products) {
-    return <LoadingText>Loading...</LoadingText>
+    return (
+      <div>
+        <FullScreenLoading />
+        <LoadingText>Loading...</LoadingText>
+      </div>
+    )
   }
 
   return (
     <div>
       <Container>
+        <Landing />
         {products.map(product => (
           <ProductListing product={product} key={product.handle} />
         ))}

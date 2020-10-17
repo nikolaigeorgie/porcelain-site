@@ -72,6 +72,7 @@
     "@fortawesome/free-brands-svg-icons": "^5.8.1",
     "@fortawesome/free-solid-svg-icons": "^5.8.1",
     "@fortawesome/react-fontawesome": "^0.1.4",
+    "node-sass": "^4.14.1",
     "normalize.css": "^8.0.1",
     "query-string": "^6.4.2",
     "react": "^16.8.6",
@@ -82,8 +83,10 @@
     "react-inner-image-zoom": "^1.1.1",
     "react-router-dom": "^5.0.0",
     "react-scripts": "2.1.8",
+    "react-three-fiber": "^4.2.10",
     "shopify-buy": "^2.11.0",
     "styled-components": "^4.2.0",
+    "three": "^0.117.1",
     "typeface-roboto": "^0.0.54",
     "use-deep-compare-effect": "^1.2.0",
     "use-react-router": "^1.0.7"

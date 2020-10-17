@@ -27,7 +27,9 @@
     "import/no-extraneous-dependencies": "off",
     "no-underscore-dangle": "off",
     "comma-dangle": "off",
-    "no-console": "off"
+    "no-console": "off",
+    "one-var": "off",
+    "no-plusplus": "off"
   },
   "settings": {
     "import/resolver": {
