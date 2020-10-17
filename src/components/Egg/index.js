@@ -1,3 +1,4 @@
+/* eslint-disable no-multi-assign */
 /* eslint-disable func-names */
 import React from "react"
 // import { ShopifyContext } from "services/shopify"
@@ -118,9 +119,8 @@ function processSurface(v, j) {
 }
 export default function Egg(props) {
   const {
-    surfaceColor = [0, 0, 0],
-    insideColor = [1, 1, 1],
-    backgroundColor,
+    surfaceColor = [0, 0, 1],
+    insideColor = [1, 1, 0],
     inverted = false
   } = props
 
