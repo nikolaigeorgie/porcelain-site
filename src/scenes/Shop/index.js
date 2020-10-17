@@ -3,6 +3,7 @@ import styled from "styled-components/macro"
 
 import ProductListing from "components/ProductListing"
 import FullScreenLoading from "components/FullScreenLoading"
+import PorcelainBG from "components/Images/Porcelain_Background.png"
 import { ShopifyContext } from "services/shopify"
 
 import Landing from "../Landing"
@@ -21,6 +22,10 @@ const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  background-image: url(${PorcelainBG});
+  background-size: cover;
+  background-position: fixed;
+  min-height: 100vh;
 `
 
 export default function Shop(props) {
