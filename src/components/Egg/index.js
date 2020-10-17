@@ -350,8 +350,8 @@ export default function Egg(props) {
       eggMesh2 = mesh1
       scene.add(mesh1)
       console.log("added both meshes to scene")
-      mesh1.scale.x = mesh1.scale.y = mesh1.scale.z = 3
-      mesh.scale.x = mesh.scale.y = mesh.scale.z = 3
+      mesh1.scale.x = mesh1.scale.y = mesh1.scale.z = 2.5
+      mesh.scale.x = mesh.scale.y = mesh.scale.z = 2.5
 
       console.log(mesh)
       console.log(mesh1)
@@ -363,8 +363,8 @@ export default function Egg(props) {
   )
 
   useFrame(({ clock }) => {
-    material.uniforms.progress.value = Math.abs(0.05)
-    material1.uniforms.progress.value = Math.abs(0.05)
+    material.uniforms.progress.value = Math.abs(0.03)
+    material1.uniforms.progress.value = Math.abs(0.03)
   })
 
   return (
