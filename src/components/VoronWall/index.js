@@ -1,83 +1,57 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable no-multi-assign */
 /* eslint-disable func-names */
-import React, { Suspense } from "react"
+import React, { useRef, Suspense } from "react"
 import * as THREE from "three"
-import { useThree, useLoader } from "react-three-fiber"
+import { useLoader, useThree, useFrame } from "react-three-fiber"
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader"
-import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader"
-import {
-  Mesh,
-  MeshNormalMaterial,
-  MeshLambertMaterial,
-  TextureLoader
-} from "three"
+import { draco } from "drei"
 
-import bg from "../Images/Porcelain_Background.png"
+import PorcelainBG from "components/Images/Porcelain_Background.png"
 
 export default function VoronWall(props) {
-  const loader = new GLTFLoader()
-  loader.setDRACOLoader(new DRACOLoader().setDecoderPath("/draco/"))
-
   const { scene } = useThree()
 
-  //   const texture = useLoader(THREE.TextureLoader, bg)
+  const { nodes, materials } = useLoader(GLTFLoader, "/porcelain.glb")
+  const texture = useLoader(THREE.TextureLoader, PorcelainBG)
+  const mesh = useRef()
 
-  loader.load(
-    "/porcelain.glb",
-    function(gltf) {
-      //   const bbox = new THREE.Box3().setFromObject(gltf.scene)
+  nodes.RootNode.rotation.x = -Math.PI / 2
+  nodes.RootNode.position.y = -200
+  scene.add(nodes.RootNode)
 
-      gltf.scene.children[0].traverse(function(child) {
-        // if (child.name === "Voronoi_Fracture") {
-        if (child.children[0] && child.children[0].children.length > 2) {
-          child.children.forEach(f => {
-            f.rotation.set(Math.PI / 2, 0, 0)
-            scene.add(f)
-            console.log(f)
-            f.children.forEach(m => {
-              // scene.add(m)
-              //   m.scale.set(0.5, 0.5, 0.5)
-              m.position.z = 180
-              //   scene.add(
-              //     new Mesh(
-              //       m.geometry,
-              //       new MeshStandardMaterial({ color: [1, 0, 1] })
-              //     )
-              //   )
-              //   m.material = new MeshLambertMaterial({
-              //     map: texture
-              //   })
-              console.log("2")
-              console.log(m)
-            })
-          })
-        } else {
-          child.children.forEach(m => {
-            // console.log("3")
-            // console.log(m)
-            // m.material.color.r = 1
-          })
-        }
-        // }
-      })
-    },
-    undefined,
-    function(e) {
-      console.error(e)
+  for (let i = 0; i < nodes.RootNode.children[0].children.length; i++) {
+    if (nodes.RootNode.children[0].children[i].geometry) {
+      //   console.log(nodes.RootNode.children[0].children[i].material)
+      nodes.RootNode.children[0].children[i].scale.x = 1
+      nodes.RootNode.children[0].children[i].material =
+        nodes.RootNode.children[0].children[10].material
+      //   nodes.RootNode.children[0].children[19].material = new THREE.MeshStandardMaterial({map: texture, color: "red"})
     }
-  )
+  }
 
-  return (
-    <Suspense fallback={null}>
-      <mesh rotation={[Math.PI / 2, 2.2, Math.PI - 1]}>
-        <boxBufferGeometry args={[3, 3, 3]} />
-        <meshBasicMaterial
-          attach="material"
-          color="blue"
-          map={new TextureLoader().load(bg)}
-        />
-      </mesh>
-    </Suspense>
-  )
+  document.addEventListener("click", () => {
+    console.log("clicked")
+    for (let i = 0; i < nodes.RootNode.children[0].children.length; i++) {
+      if (nodes.RootNode.children[0].children[i].geometry) {
+        // console.log(nodes.RootNode.children[0].children[i].material)
+        nodes.RootNode.children[0].children[i].scale.x -= 0.05
+        nodes.RootNode.children[0].children[i].scale.y -= 0.05
+        nodes.RootNode.children[0].children[i].scale.z -= 0.05
+        nodes.RootNode.children[0].children[i].rotation.x -=
+          0.05 * (Math.random() - 0.5)
+        nodes.RootNode.children[0].children[i].rotation.y -=
+          0.05 * (Math.random() - 0.5)
+      }
+    }
+  })
+
+  useFrame(({ clock }) => {
+    if (mesh.current) {
+      mesh.current.rotation.y = clock.getElapsedTime() / 10
+      mesh.current.position.y -= 0.1
+    }
+  })
+
+  return <></>
 }

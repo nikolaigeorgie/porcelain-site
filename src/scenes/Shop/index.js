@@ -1,6 +1,7 @@
 import React, { useContext } from "react"
 import styled from "styled-components/macro"
 
+import Logo from "components/Logo"
 import ProductListing from "components/ProductListing"
 import FullScreenLoading from "components/FullScreenLoading"
 import PorcelainBG from "components/Images/Porcelain_Background.png"
@@ -24,7 +25,6 @@ const Container = styled.div`
   justify-content: space-around;
   background-image: url(${PorcelainBG});
   background-size: cover;
-  background-position: fixed;
   min-height: 100vh;
 `
 
@@ -44,6 +44,7 @@ export default function Shop(props) {
     <div>
       <Container>
         <Landing />
+        <Logo />
         {products.map(product => (
           <ProductListing product={product} key={product.handle} />
         ))}

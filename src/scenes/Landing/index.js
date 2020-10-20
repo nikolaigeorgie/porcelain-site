@@ -1,4 +1,4 @@
-import React, { useMemo } from "react"
+import React, { useMemo, Suspense } from "react"
 import { Canvas } from "react-three-fiber"
 import { SpotLight } from "three"
 
@@ -10,7 +10,7 @@ export default function Landing(props) {
   const light = useMemo(() => new SpotLight(), [])
   const lightArgs = {
     distance: 500,
-    color: 0x57a4a9,
+    color: 0xaaaaaa,
     intensity: 5,
     angle: Math.PI / 2.4,
     penumbra: 0.5
@@ -19,20 +19,20 @@ export default function Landing(props) {
   return (
     <div className="canvas-container">
       <Canvas
+        gl
         shadowMap
-        camera={{ position: [0, 6, 0], near: 0.01, far: 200 }}
+        camera={{ position: [0, 6, 0], near: 0.01, far: 400 }}
         className="canvas"
+        raycaster
       >
-        <ambientLight intensity={0.4} color={[0, 1, 1]} />
-        <group position={[-4, 8, 5]}>
+        <ambientLight intensity={0.1} color={[0, 1, 1]} />
+        <group position={[0, 8, 5]}>
           <primitive castShadow object={light} {...lightArgs} />
-          <primitive object={light.target} position={[-1, -1, -1]} />\{" "}
+          <primitive object={light.target} position={[0, 0, 0]} />
         </group>
-        <mesh rotation={[Math.PI / 2, 2.2, Math.PI - 1]}>
-          <boxBufferGeometry args={[3, 3, 3]} attach="geometry" />
-          <meshStandardMaterial attach="material" color="blue" />
-        </mesh>
-        <VoronWall />
+        <Suspense fallback={<></>}>
+          <VoronWall />
+        </Suspense>
       </Canvas>
     </div>
   )
