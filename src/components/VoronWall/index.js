@@ -10,6 +10,7 @@ import { draco } from "drei"
 import PorcelainBG from "components/Images/Porcelain_Background.png"
 
 export default function VoronWall(props) {
+  const { clicked } = props
   const { scene } = useThree()
 
   const { nodes, materials } = useLoader(GLTFLoader, "/porcelain.glb")
@@ -44,6 +45,7 @@ export default function VoronWall(props) {
           0.05 * (Math.random() - 0.5)
       }
     }
+    clicked()
   })
 
   useFrame(({ clock }) => {
