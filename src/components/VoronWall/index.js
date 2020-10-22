@@ -13,7 +13,7 @@ export default function VoronWall(props) {
   const fbx = useFBXLoader("/porcelain.fbx")
 
   fbx.rotation.x = -Math.PI / 2
-  fbx.position.y = -200
+  fbx.position.y = -180
   let animationState = false
   let numClicks = 0
   if (fbx) {
