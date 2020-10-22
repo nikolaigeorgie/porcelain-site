@@ -28,6 +28,7 @@ const Description = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  max-height: 130px;
 `
 
 const Image = styled.img`
@@ -57,10 +58,10 @@ const Subtitle = styled.h3`
 
 const ShopNow = styled(Link)`
   padding: 0.5rem 1rem;
-  border: 1px solid black;
+  border: 1px solid white;
   cursor: pointer;
   transition: background 0.15s linear;
-  color: black !important;
+  color: white !important;
   text-decoration: none !important;
   text-align: center;
   letter-spacing: 0.7px;

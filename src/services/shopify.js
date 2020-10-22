@@ -4,8 +4,8 @@ import ShopifyBuy from "shopify-buy"
 export const ShopifyContext = React.createContext()
 
 const client = ShopifyBuy.buildClient({
-  domain: "spaceslabs.myshopify.com",
-  storefrontAccessToken: "84e84d37acf5cdb8f5ef71bb019287ac"
+  domain: "porcelainforsale.myshopify.com",
+  storefrontAccessToken: "c6e12c244fdd1bdea0acc6058c0bb461"
 })
 
 export function ShopifyProvider(props) {

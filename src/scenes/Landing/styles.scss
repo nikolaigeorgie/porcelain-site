@@ -1,7 +1,3 @@
-.canvas {
-    // background: transparent;
-}
-
 .canvas-container {
     position: absolute;
     top: 0;
@@ -9,4 +5,12 @@
     height: 100vh;
     width: 100%;
     z-index: 10;
+    opacity: 1;
+    transition: opacity 3s;
+    transition-delay: 0.62s
+}
+
+.finished {
+    opacity: 0;
+    pointer-events: none !important;
 }

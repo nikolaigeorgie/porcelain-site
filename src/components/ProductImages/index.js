@@ -29,6 +29,10 @@ const MainImage = styled(InnerImageZoom)`
   @media screen and (max-width: 400px) {
     width: 220px;
   }
+
+  img {
+    max-width: 100%;
+  }
 `
 
 const Thumbnail = styled.img`
@@ -67,8 +71,7 @@ const SubContainer = styled.div`
 export default function ProductImages(props) {
   const { product } = props
 
-  // remove gif
-  const images = product.images.slice(0, product.images.length - 1)
+  const { images } = product
   const [index, setIndex] = useState(0)
 
   const changeIndex = useCallback(
@@ -84,13 +87,16 @@ export default function ProductImages(props) {
     },
     [images.length, index]
   )
-
   return (
     <Container>
       <SubContainer>
-        <PaginateButton onClick={() => changeIndex(-1)}>{"<"}</PaginateButton>
+        {images.length > 1 && (
+          <PaginateButton onClick={() => changeIndex(-1)}>{"<"}</PaginateButton>
+        )}
         <MainImage src={images[index].src} />
-        <PaginateButton onClick={() => changeIndex(1)}>{">"}</PaginateButton>
+        {images.length > 1 && (
+          <PaginateButton onClick={() => changeIndex(1)}>{">"}</PaginateButton>
+        )}
       </SubContainer>
       <div className="shop-other__images">
         {images.map((image, i) => {

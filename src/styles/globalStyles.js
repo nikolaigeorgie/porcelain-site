@@ -9,5 +9,9 @@ export default createGlobalStyle`
     font-family: Avenir, Lato, Roboto, sans-serif;
     overflow: auto;
     overflow-x: hidden;
+    background: black;
+  }
+  ::-webkit-scrollbar {
+    display: none;
   }
 `

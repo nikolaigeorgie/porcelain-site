@@ -23,13 +23,12 @@ const FullScreenWrapper = styled.div`
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: -1;
+  z-index: 9999;
 
   background-image: url(${PorcelainBG});
   background-size: cover;
 
-  // background: linear-gradient(135deg, rgba(13, 23, 187, 0.93), #a90a77);
-  // background-size: 400% 400%;
+  background-color: "lightblue";
 
   animation: ${scrollGradient} 40s ease infinite;
 

@@ -14,6 +14,7 @@ const Container = styled.div`
   height: 100%;
   box-sizing: border-box;
   overflow-y: auto;
+  color: white;
 
   & > * {
     td {
