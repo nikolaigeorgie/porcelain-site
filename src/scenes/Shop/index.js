@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react"
 import styled from "styled-components/macro"
 
-import Logo from "components/Logo"
+import LogoLandingPage from "components/LogoLandingPage"
 import ProductListing from "components/ProductListing"
 import FullScreenLoading from "components/FullScreenLoading"
 import VideoBackground from "components/VideoBackground"
@@ -57,7 +57,7 @@ export default function Shop(props) {
       {products && (
         <Container>
           <Landing setLoading={setLoading} />
-          <Logo />
+          <LogoLandingPage />
           {products.map(product => (
             <ProductListing product={product} key={product.handle} />
           ))}

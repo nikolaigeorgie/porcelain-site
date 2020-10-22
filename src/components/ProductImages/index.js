@@ -16,10 +16,11 @@ const Container = styled.div`
   }
 `
 
+// this inner image zoom thing doesn't seem to be working
 const MainImage = styled(InnerImageZoom)`
   width: 350px;
   margin-top: 50px;
-  border: 1px solid black;
+  // border: 1px solid black;
   margin-bottom: 20px;
 
   @media screen and (max-width: 500px) {

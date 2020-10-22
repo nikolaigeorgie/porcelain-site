@@ -69,6 +69,7 @@ export default function Product(props) {
 
   return (
     <Container>
+      <Logo />
       <ProductImages product={product} />
       <ProductDetails product={product} {...shopify} />
       <VideoBackground />

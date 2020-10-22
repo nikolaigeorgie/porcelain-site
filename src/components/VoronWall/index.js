@@ -35,11 +35,16 @@ export default function VoronWall(props) {
     }
     clicked()
     if (numClicks > 3) {
-      document.removeEventListener("click", onLandingClick)
+      console.log("removed event listener")
+      document
+        .getElementsByTagName("canvas")[0]
+        .removeEventListener("click", onLandingClick)
     }
   }
 
-  document.addEventListener("click", onLandingClick)
+  document
+    .getElementsByTagName("canvas")[0]
+    .addEventListener("click", onLandingClick)
 
   useFrame(({ clock }) => {
     if (animationState && fbx.children[0].scale.x > 0) {
