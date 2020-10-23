@@ -20,6 +20,12 @@ const Container = styled.div`
   &:last-of-type {
     margin-bottom: 0;
   }
+
+  user-select: none;
+
+  & > * {
+    user-select: none;
+  }
 `
 
 const Description = styled.div`

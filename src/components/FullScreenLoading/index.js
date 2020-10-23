@@ -25,10 +25,7 @@ const FullScreenWrapper = styled.div`
   left: 0;
   z-index: 9999;
 
-  background-image: url(${PorcelainBG});
-  background-size: cover;
-
-  background-color: "lightblue";
+  background: white;
 
   animation: ${scrollGradient} 40s ease infinite;
 

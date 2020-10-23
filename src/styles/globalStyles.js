@@ -5,8 +5,13 @@ import "normalize.css"
 import "./fontawesome"
 
 export default createGlobalStyle`
+  @font-face {
+    font-family: 'VCR';
+    src: url('VCR_OSD_MONO.ttf');
+  }
+
   body {
-    font-family: Avenir, Lato, Roboto, sans-serif;
+    font-family: "VCR", Avenir, Lato, Roboto, sans-serif;
     overflow: auto;
     overflow-x: hidden;
     background: black;

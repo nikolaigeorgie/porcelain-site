@@ -46,7 +46,7 @@ export default function VoronWall(props) {
     .getElementsByTagName("canvas")[0]
     .addEventListener("click", onLandingClick)
 
-  useFrame(({ clock }) => {
+  useFrame(({ clock, delta }) => {
     if (animationState && fbx.children[0].scale.x > 0) {
       for (let i = 0; i < fbx.children.length; i++) {
         if (fbx.children[i].geometry) {

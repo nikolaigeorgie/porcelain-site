@@ -2,7 +2,6 @@
 /* eslint-disable react/jsx-no-bind */
 import React, { useMemo, Suspense } from "react"
 import { Canvas } from "react-three-fiber"
-import { SpotLight } from "three"
 
 import VoronWall from "components/VoronWall"
 
@@ -10,15 +9,6 @@ import "./styles.scss"
 
 export default function Landing(props) {
   const { setLoading } = props
-  const light = useMemo(() => new SpotLight(), [])
-  const lightArgs = {
-    distance: 500,
-    color: 0xaaaaaa,
-    intensity: 3,
-    angle: Math.PI / 2.4,
-    penumbra: 0.4
-  }
-
   let numClicks = 0
 
   const clicked = function() {
@@ -47,10 +37,7 @@ export default function Landing(props) {
           className="canvas"
           raycaster
         >
-          <group position={[0, 8, 5]}>
-            <primitive castShadow object={light} {...lightArgs} />
-            <primitive object={light.target} position={[0, 0, 0]} />
-          </group>
+          <ambientLight intensity={2} />
           <Suspense fallback={<></>}>
             <VoronWall clicked={clicked} setLoading={setLoading} />
           </Suspense>
