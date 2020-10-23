@@ -12,6 +12,12 @@
   pointer-events: none;
   transform: translateX(-50%) translateY(-50%);
 
+  user-select: none;
+
+  & > * {
+    user-select: none;
+  }
+
   .logo {
     margin: 0 auto;
     height: auto;
@@ -22,6 +28,10 @@
 
     &:focus {
       outline: none;
+    }
+
+    &.no-shadow {
+      display: none;
     }
   }
 
@@ -38,5 +48,13 @@
 
   @media screen and (max-width: 400px) {
     width: 180px;
+  }
+
+  & .logo {
+    display: none;
+
+    &.no-shadow {
+      display: block;
+    }
   }
 }
