@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from "react"
 import styled from "styled-components/macro"
-import InnerImageZoom from "react-inner-image-zoom"
+// import InnerImageZoom from "react-inner-image-zoom"
 
 const Container = styled.div`
   display: flex;
@@ -17,28 +17,27 @@ const Container = styled.div`
   }
 `
 
-// this inner image zoom thing doesn't seem to be working
 const MainImage = styled.img`
   width: 350px;
   margin-top: 50px;
-  // border: 1px solid black;
   margin-bottom: 20px;
 
   img {
     max-width: 100%;
+    height: auto;
   }
 `
 
-const Thumbnail = styled.img`
-  width: 55px;
-  height: 55px;
-  margin: 10px;
-  transition: 0.2s;
-  object-fit: cover;
-  object-position: top center;
-  ${props => !props.selected && "cursor: pointer"};
-  opacity: ${props => (props.selected ? 0.5 : 1)};
-`
+// const Thumbnail = styled.img`
+//   width: 55px;
+//   height: 55px;
+//   margin: 10px;
+//   transition: 0.2s;
+//   object-fit: cover;
+//   object-position: top center;
+//   ${props => !props.selected && "cursor: pointer"};
+//   opacity: ${props => (props.selected ? 0.5 : 1)};
+// `
 
 const PaginateButton = styled.button`
   font-size: 35px;
