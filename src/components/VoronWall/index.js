@@ -22,6 +22,9 @@ export default function VoronWall(props) {
   console.log(fbx)
 
   const onLandingClick = () => {
+    if (animationState) {
+      return
+    }
     animationState = true
     numClicks++
     if (numClicks <= 3) {

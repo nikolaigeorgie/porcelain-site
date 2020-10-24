@@ -6,4 +6,8 @@
     min-height: 100%;
     z-index: -1;
     pointer-events: none;
+
+    @media (max-width: 1200px) {
+        max-height: 150%;
+    }
 }

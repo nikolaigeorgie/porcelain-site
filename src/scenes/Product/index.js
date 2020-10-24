@@ -18,13 +18,14 @@ const LoadingText = styled.h1`
 
 const Container = styled.div`
   display: flex;
+  flex-direction: column;
+  align-items: center;
   height: 100vh;
-  justify-content: space-evenly;
+  justify-content: center;
   // background-image: url(${PorcelainBG});
-  background-color: rgba(0,0,0,0.4);
+  background: linear-gradient(rgba(0,0,0,0.5), rgb(35 0 68 / 80%));
   background-size: cover;
   width: 100%;
-  flex-direction: row;
   overflow: auto;
 
   @media screen and (max-width: 875px) {

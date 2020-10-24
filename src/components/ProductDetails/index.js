@@ -10,7 +10,6 @@ const Container = styled.div`
   justify-content: flex-start;
   width: 40%;
   max-width: 420px;
-  padding: 100px 2px;
   height: 100%;
   box-sizing: border-box;
   overflow-y: auto;
@@ -43,19 +42,21 @@ const Container = styled.div`
 const VariantContainer = styled.div`
   display: flex;
   margin-top: 20px;
+  margin-bottom: 20px;
 `
 
 const BuyButton = styled.button`
   outline: none;
-  background-color: black;
+  background-color: transparent;
   color: white;
-  margin: 20px 0px 5px 0px;
-  width: 100%;
-  padding: 15px 20px 15px 20px;
+  margin: 20px 0px 0px 0px;
+  width: 40%;
+  padding: 15px 5px;
   transition: 0.5s;
   text-align: center;
-  font-size: 20px;
-  border: 1px solid black;
+  font-size: 19px;
+  border-radius: 30px;
+  border: 2px solid white;
 
   &:hover {
     background-color: white;
@@ -65,8 +66,23 @@ const BuyButton = styled.button`
   }
 `
 
-const DimensionsButton = styled(BuyButton)`
-  margin-bottom: 20px;
+const BuyNowButton = styled(BuyButton)`
+  background: white;
+  color: #41bbe2;
+
+  &:hover {
+    background: red;
+  }
+`
+
+const ButtonContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`
+
+const SelectSize = styled.div`
+  font-size: 1.5rem;
 `
 
 export default function ProductDetails(props) {
@@ -101,10 +117,16 @@ export default function ProductDetails(props) {
   return (
     <Container>
       <div>
-        <h1>{title}</h1>
+        <h1 style={{ fontWeight: "lighter", margin: 0, fontSize: "1.8rem" }}>
+          {title}
+        </h1>
       </div>
       <div>
-        <h2>${variants[0].price}</h2>
+        <h2 style={{ fontWeight: "lighter", fontSize: "1.5rem" }}>
+          ${variants[0].price}
+        </h2>
+        <div>{description}</div>
+        <SelectSize>Select Size</SelectSize>
         <VariantContainer>
           {variants.map(variant => (
             <Variant
@@ -114,12 +136,10 @@ export default function ProductDetails(props) {
             />
           ))}
         </VariantContainer>
-        <BuyButton onClick={() => addToCheckout()}>ADD TO CART</BuyButton>
-        <DimensionsButton onClick={() => toggleDims()}>
-          DIMENSIONS
-        </DimensionsButton>
-        {dimsOpen === "true" && dims}
-        {description}
+        <ButtonContainer>
+          <BuyButton onClick={() => addToCheckout()}>ADD TO CART</BuyButton>
+          <BuyNowButton onClick={() => addToCheckout()}>BUY NOW</BuyNowButton>
+        </ButtonContainer>
       </div>
     </Container>
   )

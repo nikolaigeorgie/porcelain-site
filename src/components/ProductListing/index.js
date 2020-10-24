@@ -54,12 +54,14 @@ const Title = styled.h2`
   text-align: center;
   margin: 0.5rem 0;
   font-weight: 100;
+  color: white !important;
 `
 
 const Subtitle = styled.h3`
   text-align: center;
   margin-top: 0;
   font-weight: 100;
+  color: white !important;
 `
 
 const ShopNow = styled(Link)`
@@ -67,7 +69,6 @@ const ShopNow = styled(Link)`
   border: 1px solid white;
   cursor: pointer;
   transition: background 0.15s linear;
-  color: white !important;
   text-decoration: none !important;
   text-align: center;
   letter-spacing: 0.7px;
@@ -85,12 +86,13 @@ export default function ProductListing(props) {
 
   return (
     <Container>
-      <Image src={images[0].src} />
-      <Description>
-        <Title>{title}</Title>
-        <Subtitle>${price}</Subtitle>
-        <ShopNow to={`/${handle}`}>Shop Style</ShopNow>
-      </Description>
+      <Link style={{ textDecoration: "none" }} to={`/${handle}`}>
+        <Image src={images[0].src} />
+        <Description>
+          <Title>{title}</Title>
+          <Subtitle>${price}</Subtitle>
+        </Description>
+      </Link>
     </Container>
   )
 }

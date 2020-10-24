@@ -9,6 +9,9 @@ const VariantButton = styled.button`
   width: 50px;
   height: 50px;
   transition: 0.15s;
+  border-radius: 15px;
+  border 2px solid white;
+  margin-right: 15px;
 
   //variant
   background-color: black;
@@ -25,8 +28,9 @@ const VariantButton = styled.button`
 `
 
 const UnavailableVariant = styled(VariantButton)`
-  border: 2px solid transparent;
+  border: 2px solid red;
   background-color: transparent;
+  margin-right: 15px;
   color: red;
   cursor: auto !important;
 

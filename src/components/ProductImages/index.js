@@ -9,6 +9,7 @@ const Container = styled.div`
   height: 100%;
   position: relative;
   flex-direction: column;
+  margin-top: 50px;
 
   @media screen and (max-width: 875px) {
     height: auto;
@@ -17,7 +18,7 @@ const Container = styled.div`
 `
 
 // this inner image zoom thing doesn't seem to be working
-const MainImage = styled(InnerImageZoom)`
+const MainImage = styled.img`
   width: 350px;
   margin-top: 50px;
   // border: 1px solid black;
@@ -99,7 +100,7 @@ export default function ProductImages(props) {
           <PaginateButton onClick={() => changeIndex(1)}>{">"}</PaginateButton>
         )}
       </SubContainer>
-      <div className="shop-other__images">
+      {/* <div className="shop-other__images">
         {images.map((image, i) => {
           return (
             <Thumbnail
@@ -110,7 +111,7 @@ export default function ProductImages(props) {
             />
           )
         })}
-      </div>
+      </div> */}
     </Container>
   )
 }

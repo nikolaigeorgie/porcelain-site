@@ -2,8 +2,6 @@
 /* eslint-disable camelcase */
 import React from "react"
 
-import PorcelainLoop_Desktop from "../Images/background_desktop.mp4"
-
 import "./styles.scss"
 
 export default function VideoBackground() {
