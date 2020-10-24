@@ -9,7 +9,7 @@ const VariantButton = styled.button`
   width: 50px;
   height: 50px;
   transition: 0.15s;
-  border-radius: 15px;
+  border-radius: 10px;
   border 2px solid white;
   margin-right: 15px;
 

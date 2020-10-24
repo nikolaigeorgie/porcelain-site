@@ -54,7 +54,7 @@ const BuyButton = styled.button`
   padding: 15px 5px;
   transition: 0.5s;
   text-align: center;
-  font-size: 19px;
+  font-size: 18px;
   border-radius: 30px;
   border: 2px solid white;
 
@@ -82,7 +82,16 @@ const ButtonContainer = styled.div`
 `
 
 const SelectSize = styled.div`
-  font-size: 1.5rem;
+  margin-top: 20px;
+  font-size: 1.3rem;
+`
+
+const SalesFinalText = styled.div`
+  font-size: 0.7rem;
+  opacity: 0.9;
+  margin: 40px 0;
+  width: 100%;
+  text-align: center;
 `
 
 export default function ProductDetails(props) {
@@ -110,19 +119,19 @@ export default function ProductDetails(props) {
     obj => obj.type !== "meta" && obj.type !== "table"
   )
 
-  const dims = ReactHtmlParser(descriptionHtml).find(
-    obj => obj.type === "table"
-  ) || <b>Dimensions not available.</b>
+  // const dims = ReactHtmlParser(descriptionHtml).find(
+  //   obj => obj.type === "table"
+  // ) || <b>Dimensions not available.</b>
 
   return (
     <Container>
       <div>
-        <h1 style={{ fontWeight: "lighter", margin: 0, fontSize: "1.8rem" }}>
+        <h1 style={{ fontWeight: "lighter", margin: 0, fontSize: "1.3rem" }}>
           {title}
         </h1>
       </div>
       <div>
-        <h2 style={{ fontWeight: "lighter", fontSize: "1.5rem" }}>
+        <h2 style={{ fontWeight: "lighter", fontSize: "1.3rem" }}>
           ${variants[0].price}
         </h2>
         <div>{description}</div>
@@ -140,6 +149,7 @@ export default function ProductDetails(props) {
           <BuyButton onClick={() => addToCheckout()}>ADD TO CART</BuyButton>
           <BuyNowButton onClick={() => addToCheckout()}>BUY NOW</BuyNowButton>
         </ButtonContainer>
+        <SalesFinalText>ALL SALES FINAL</SalesFinalText>
       </div>
     </Container>
   )

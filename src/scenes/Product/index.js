@@ -23,7 +23,7 @@ const Container = styled.div`
   height: 100vh;
   justify-content: center;
   // background-image: url(${PorcelainBG});
-  background: linear-gradient(rgba(0,0,0,0.5), rgb(35 0 68 / 80%));
+  // background: linear-gradient(rgba(0,0,0,0.5), rgb(35 0 68 / 80%));
   background-size: cover;
   width: 100%;
   overflow: auto;

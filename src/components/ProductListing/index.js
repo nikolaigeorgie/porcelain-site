@@ -64,20 +64,6 @@ const Subtitle = styled.h3`
   color: white !important;
 `
 
-const ShopNow = styled(Link)`
-  padding: 0.5rem 1rem;
-  border: 1px solid white;
-  cursor: pointer;
-  transition: background 0.15s linear;
-  text-decoration: none !important;
-  text-align: center;
-  letter-spacing: 0.7px;
-
-  &:hover {
-    background: rgba(0, 0, 0, 0.2);
-  }
-`
-
 export default function ProductListing(props) {
   const { product } = props
 

@@ -29,7 +29,7 @@ const Container = styled.div`
   flex-wrap: wrap;
   justify-content: space-around;
   // background-image: url(${PorcelainBG});
-  background: linear-gradient(rgba(0,0,0,0.5), rgb(35 0 68 / 80%));
+  // background: linear-gradient(rgba(0,0,0,0.7), rgb(35 0 68 / 80%));
   color: white;
   background-size: cover;
   min-height: 100vh;
