@@ -24,14 +24,6 @@ const MainImage = styled.img`
   // border: 1px solid black;
   margin-bottom: 20px;
 
-  @media screen and (max-width: 500px) {
-    width: 250px;
-  }
-
-  @media screen and (max-width: 400px) {
-    width: 220px;
-  }
-
   img {
     max-width: 100%;
   }

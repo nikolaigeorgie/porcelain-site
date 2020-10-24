@@ -10,6 +10,7 @@ import "./styles.scss"
 export default function Landing(props) {
   const { setLoading } = props
   let numClicks = 0
+  document.body.style.overflowY = "hidden"
 
   const clicked = function() {
     // console.log("parent received click")
