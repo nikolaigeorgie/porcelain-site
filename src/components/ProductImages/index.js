@@ -20,6 +20,10 @@ const Container = styled.div`
 const MainImage = styled.img`
   max-width: 100%;
   max-height: 100%;
+
+  @media (max-width: 800px) {
+    height: 400px;
+  }
 `
 
 // const Thumbnail = styled.img`
