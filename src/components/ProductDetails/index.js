@@ -82,8 +82,13 @@ const ButtonContainer = styled.div`
 `
 
 const SelectSize = styled.div`
-  margin-top: 20px;
   font-size: 1.3rem;
+`
+
+const Description = styled.div`
+  font-size: 1.3rem;
+  margin-bottom: 25px;
+  text-transform: uppercase;
 `
 
 const SalesFinalText = styled.div`
@@ -141,7 +146,7 @@ export default function ProductDetails(props) {
         <h2 style={{ fontWeight: "lighter", fontSize: "1.3rem" }}>
           ${variants[0].price}
         </h2>
-        <div>{description}</div>
+        <Description>{description}</Description>
         <SelectSize>Select Size</SelectSize>
         <VariantContainer>
           {variants.map(variant => (
