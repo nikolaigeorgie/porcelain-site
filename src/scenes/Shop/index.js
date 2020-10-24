@@ -51,7 +51,7 @@ export default function Shop(props) {
       {(!products || isLoading) && (
         <div>
           <FullScreenLoading />
-          <LoadingText>Loading...</LoadingText>
+          <LoadingText>LOADING...</LoadingText>
         </div>
       )}
       {products && (
