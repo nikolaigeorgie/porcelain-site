@@ -18,14 +18,8 @@ const Container = styled.div`
 `
 
 const MainImage = styled.img`
-  width: 350px;
-  margin-top: 50px;
-  margin-bottom: 20px;
-
-  img {
-    max-width: 100%;
-    height: auto;
-  }
+  max-width: 100%;
+  max-height: 100%;
 `
 
 // const Thumbnail = styled.img`
@@ -59,6 +53,8 @@ const PaginateButton = styled.button`
 
 const SubContainer = styled.div`
   display: flex;
+  width: 350px;
+  max-width: 100%;
 `
 
 export default function ProductImages(props) {
