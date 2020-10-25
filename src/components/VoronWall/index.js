@@ -22,7 +22,7 @@ export default function VoronWall(props) {
   console.log(fbx)
 
   const onLandingClick = () => {
-    if (animationState) {
+    if (animationState || fbx === undefined) {
       return
     }
     animationState = true

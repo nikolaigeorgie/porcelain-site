@@ -14,7 +14,7 @@ const VariantButton = styled.button`
   margin-right: 15px;
 
   //variant
-  background-color: black;
+  background-color: transparent;
   color: white;
 
   ${props => !props.selected && "cursor: pointer"};
