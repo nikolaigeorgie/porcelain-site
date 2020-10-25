@@ -7,7 +7,8 @@
     z-index: 10;
     opacity: 1;
     transition: opacity 3s;
-    transition-delay: 0.62s
+    transition-delay: 0.62s;
+    filter: brightness(0.9);
 }
 
 .finished {

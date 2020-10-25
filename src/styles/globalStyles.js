@@ -16,10 +16,7 @@ export default createGlobalStyle`
     overflow-x: hidden;
     background: black;
   }
-  
-  @media(min-width: 800px) {
-    ::-webkit-scrollbar {
-      display: none;
-    }
+  ::-webkit-scrollbar {
+    display: none;
   }
 `
