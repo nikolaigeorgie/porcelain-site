@@ -1,7 +1,7 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable no-multi-assign */
 /* eslint-disable func-names */
-import React from "react"
+import React, { useEffect } from "react"
 import * as THREE from "three"
 import { useLoader, useFrame } from "react-three-fiber"
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader"
@@ -60,6 +60,14 @@ export default function VoronWall(props) {
           fbx.children[i].rotation.y -= 0.01 * (Math.random() - 0.5)
         }
       }
+    }
+  })
+
+  useEffect(() => {
+    // console.log(vid_source)
+    if (window.innerWidth < 800 && fbx) {
+      // console.log(vid_source.current)
+      fbx.scale.x = fbx.scale.y = fbx.scale.z = 0.9
     }
   })
 
