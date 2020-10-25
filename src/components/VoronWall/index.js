@@ -39,15 +39,9 @@ export default function VoronWall(props) {
     clicked()
     if (numClicks > 3) {
       console.log("removed event listener")
-      document
-        .getElementsByTagName("canvas")[0]
-        .removeEventListener("click", onLandingClick)
+      document.removeEventListener("click", onLandingClick)
     }
   }
-
-  document
-    .getElementsByTagName("canvas")[0]
-    .addEventListener("click", onLandingClick)
 
   useFrame(({ clock, delta }) => {
     if (animationState && fbx.children[0].scale.x > 0) {
@@ -64,11 +58,11 @@ export default function VoronWall(props) {
   })
 
   useEffect(() => {
-    // console.log(vid_source)
     if (window.innerWidth < 800 && fbx) {
-      // console.log(vid_source.current)
       fbx.scale.x = fbx.scale.y = fbx.scale.z = 0.9
     }
+    document.addEventListener("click", onLandingClick)
+    return () => document.removeEventListener("click", onLandingClick)
   })
 
   return <primitive object={fbx} dispose={null} />
