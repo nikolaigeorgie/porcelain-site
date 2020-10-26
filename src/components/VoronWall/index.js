@@ -13,7 +13,7 @@ export default function VoronWall(props) {
   const fbx = useFBXLoader("/porcelain.fbx")
 
   fbx.rotation.x = -Math.PI / 2
-  fbx.position.y = -180
+  fbx.position.y = -190
   let animationState = false
   let numClicks = 0
   if (fbx) {
@@ -50,8 +50,10 @@ export default function VoronWall(props) {
           fbx.children[i].scale.x -= 0.01
           fbx.children[i].scale.y -= 0.01
           fbx.children[i].scale.z -= 0.01
-          fbx.children[i].rotation.x -= 0.01 * (Math.random() - 0.5)
-          fbx.children[i].rotation.y -= 0.01 * (Math.random() - 0.5)
+          fbx.children[i].position.x -= 0.01
+          fbx.children[i].position.y -= 0.01
+          fbx.children[i].rotation.x -= 0.04 * (Math.random() - 0.5)
+          fbx.children[i].rotation.y -= 0.04 * (Math.random() - 0.5)
         }
       }
     }
@@ -59,7 +61,7 @@ export default function VoronWall(props) {
 
   useEffect(() => {
     if (window.innerWidth < 800 && fbx) {
-      fbx.scale.x = fbx.scale.y = fbx.scale.z = 0.9
+      fbx.position.y = -203
     }
     document.addEventListener("click", onLandingClick)
     return () => document.removeEventListener("click", onLandingClick)
