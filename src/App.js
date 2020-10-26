@@ -27,7 +27,6 @@ export default function App() {
           <ScrollToTop>
             <Switch>
               <Route path="/" component={View} exact />
-              {/* <Route path="/cart" component={Cart} /> */}
               <Route path="/:handle" component={Product} />
               {/* TODO: 404 Page */}
             </Switch>

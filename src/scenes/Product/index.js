@@ -6,6 +6,7 @@ import ProductImages from "components/ProductImages"
 import ProductDetails from "components/ProductDetails"
 import PorcelainBG from "components/Images/Porcelain_Background.png"
 import Logo from "components/Logo"
+import Cart from "components/Cart"
 import VideoBackground from "components/VideoBackground"
 import { ShopifyContext } from "services/shopify"
 
@@ -38,6 +39,7 @@ const CartIcon = styled.div`
   top: -20px;
   right: 30px;
   max-height: 10vw;
+  z-index: 13;
 `
 
 export default function Product(props) {
@@ -74,7 +76,12 @@ export default function Product(props) {
       <ProductImages product={product} />
       <ProductDetails product={product} {...shopify} />
       <VideoBackground />
-      <CartIcon>
+      <Cart />
+      <CartIcon
+        onClick={() => {
+          shopify.setCheckoutOpen("true")
+        }}
+      >
         <svg
           width="117px"
           height="144px"

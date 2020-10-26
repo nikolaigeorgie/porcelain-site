@@ -6,8 +6,10 @@ import PorcelainLogo from "../Images/porcelain.png"
 
 export default function Logo() {
   return (
-    <a href="/" className="logo-container-static">
-      <img className="logo" src={PorcelainLogo} alt="Porcelain" />
-    </a>
+    <div className="logo-container-static">
+      <a href="/" style={{ width: "fit-content" }}>
+        <img className="logo" src={PorcelainLogo} alt="Porcelain" />
+      </a>
+    </div>
   )
 }

@@ -11,6 +11,7 @@ const Container = styled.div`
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 4;
   position: fixed;
+  top: 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -156,7 +157,7 @@ export default function Cart(props) {
           </Exit>
           <h1>Cart</h1>
           <Row>
-            <p>ANTI</p>
+            <p>PORCELAIN</p>
             <p>IMAGE</p>
             <p>SIZE</p>
             <p>PRODUCT NAME</p>

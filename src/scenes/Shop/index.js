@@ -5,6 +5,7 @@ import LogoLandingPage from "components/LogoLandingPage"
 import ProductListing from "components/ProductListing"
 import FullScreenLoading from "components/FullScreenLoading"
 import VideoBackground from "components/VideoBackground"
+import Cart from "components/Cart"
 import PorcelainBG from "components/Images/Porcelain_Background.png"
 import { ShopifyContext } from "services/shopify"
 
@@ -43,7 +44,7 @@ const CartIcon = styled.div`
 `
 
 export default function Shop(props) {
-  const { products } = useContext(ShopifyContext)
+  const { products, setCheckoutOpen } = useContext(ShopifyContext)
   const [isLoading, setLoading] = useState(true)
 
   return (
@@ -62,7 +63,12 @@ export default function Shop(props) {
             <ProductListing product={product} key={product.handle} />
           ))}
           <VideoBackground />
-          <CartIcon>
+          <Cart />
+          <CartIcon
+            onClick={() => {
+              setCheckoutOpen("true")
+            }}
+          >
             <svg
               width="117px"
               height="144px"
