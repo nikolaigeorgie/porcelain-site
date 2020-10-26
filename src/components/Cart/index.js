@@ -12,6 +12,7 @@ const Container = styled.div`
   z-index: 4;
   position: fixed;
   top: 0;
+  left: 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -19,14 +20,14 @@ const Container = styled.div`
 `
 
 const Checkout = styled.div`
-  width: 800px;
-  height: 500px;
-  background-color: black;
-  border: white solid 5px;
+  width: 80vw;
+  height: 80vh;
+  background-color: white;
+  border-radius: 10px;
   padding: 20px;
   box-sizing: border-box;
   position: relative;
-  color: white;
+  color: black;
 
   @media screen and (max-width: 650px) {
     width: 100%;
@@ -45,9 +46,9 @@ const Header = styled.div`
 `
 
 const Exit = styled.button`
-  color: white;
+  color: black;
   position: absolute;
-  left: 20px;
+  right: 20px;
   font-size: 30px;
   outline: none;
   border: none;
@@ -56,18 +57,8 @@ const Exit = styled.button`
 
   &:hover {
     cursor: pointer;
-    color: rgba(250, 250, 250, 0.5);
+    color: rgba(0, 0, 0, 0.5);
     transition: 0.3s;
-  }
-`
-
-const Row = styled.div`
-  display: flex;
-  width: 100%;
-  justify-content: space-around;
-
-  @media screen and (max-width: 650px) {
-    display: none;
   }
 `
 
@@ -82,22 +73,23 @@ const Content = styled.div`
 `
 
 const Footer = styled.div`
-  color: white;
+  color: black;
   position: absolute;
   bottom: 5px;
-  width: 95%;
+  width: 36%;
+  right: 50px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 
   & a {
     font-size: 20px;
-    color: rgba(250, 250, 250, 0.5);
+    color: rgba(0, 0, 0, 0.5);
     transition: 0.3s;
     text-decoration: none;
 
     &:hover {
-      color: white;
+      color: black;
       transition: 0.3s;
     }
 
@@ -109,6 +101,30 @@ const Footer = styled.div`
   @media screen and (max-width: 850px) {
     width: 90%;
   }
+`
+
+const CartIcon = styled.div`
+  position: absolute;
+  top: -20px;
+  right: 30px;
+  max-height: 10vw;
+  z-index: 9;
+`
+
+const CartIndicator = styled.div`
+  position: absolute;
+  top: 50px;
+  right: -5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  font-size: 10px;
+  width: 15px;
+  height: 15px;
+  color: white;
+  background: red;
+  border: 2px solid white;
 `
 
 const EmptyText = styled.h4`
@@ -145,40 +161,97 @@ export default function Cart(props) {
   const { lineItems, subtotalPrice, webUrl } = checkout
 
   return (
-    <Container open={checkoutOpen}>
-      <Checkout>
-        <Header>
-          <Exit
-            onClick={() => {
-              setCheckoutOpen("false")
-            }}
+    <div>
+      <CartIcon
+        onClick={() => {
+          setCheckoutOpen("true")
+        }}
+      >
+        <svg
+          width="117px"
+          height="144px"
+          viewBox="0 0 117 144"
+          version="1.1"
+          className="cart-icon"
+          style={{ maxWidth: "30px" }}
+        >
+          <g
+            id="Page-1"
+            stroke="none"
+            strokeWidth="1"
+            fill="none"
+            fillRule="evenodd"
           >
-            x
-          </Exit>
-          <h1>Cart</h1>
-          <Row>
-            <p>PORCELAIN</p>
-            <p>IMAGE</p>
-            <p>SIZE</p>
-            <p>PRODUCT NAME</p>
-            <p>QUANTITY</p>
-            <p>PRICE</p>
-          </Row>
-        </Header>
-        <Content>
-          {lineItems && lineItems.length > 0 ? (
-            lineItems.map(item => (
-              <Item item={item} removeFromCheckout={removeFromCheckout} />
-            ))
-          ) : (
-            <EmptyText>YOUR CART IS EMPTY</EmptyText>
-          )}
-        </Content>
-        <Footer>
-          <h4>Subtotal: ${subtotalPrice}</h4>
-          <a href={webUrl}>CHECKOUT</a>
-        </Footer>
-      </Checkout>
-    </Container>
+            <g
+              id="Group-Copy-5"
+              transform="translate(2.000000, 2.000000)"
+              fill="#FFFFFF"
+              fillRule="nonzero"
+              stroke="#FFFFFF"
+              strokeWidth="3"
+            >
+              <g id="126515">
+                <path
+                  d="M112.578405,121.364172 L104.539141,30.836319 C104.366871,28.8265031 102.672883,27.3047853 100.691779,27.3047853 L84.153865,27.3047853 C83.9241718,12.202454 71.5781595,-1.08713039e-12 56.4184049,-1.08713039e-12 C41.2586503,-1.08713039e-12 28.912638,12.202454 28.6829448,27.3047853 L12.1450307,27.3047853 C10.1352147,27.3047853 8.46993865,28.8265031 8.29766871,30.836319 L0.258404908,121.364172 C0.258404908,121.479018 0.229693252,121.593865 0.229693252,121.708712 C0.229693252,132.016196 9.67582822,140.4 21.3040491,140.4 L91.5327607,140.4 C103.160982,140.4 112.607117,132.016196 112.607117,121.708712 C112.607117,121.593865 112.607117,121.479018 112.578405,121.364172 Z M56.4184049,7.75214724 C67.3001227,7.75214724 76.1720245,16.4804908 76.4017178,27.3047853 L36.435092,27.3047853 C36.6647853,16.4804908 45.5366871,7.75214724 56.4184049,7.75214724 Z M91.5327607,132.647853 L21.3040491,132.647853 C14.0112883,132.647853 8.09668712,127.824294 7.98184049,121.880982 L15.6765644,35.0856442 L28.6542331,35.0856442 L36.4063804,35.0856442 L76.4017178,35.0856442 L84.153865,35.0856442 L97.1315337,35.0856442 L104.854969,121.880982 sC104.740123,127.824294 98.7968098,132.647853 91.5327607,132.647853 Z"
+                  id="Shape"
+                />
+              </g>
+            </g>
+          </g>
+        </svg>
+        {lineItems && lineItems.length > 0 ? (
+          <CartIndicator>{lineItems.length}</CartIndicator>
+        ) : (
+          <></>
+        )}
+      </CartIcon>
+      <Container open={checkoutOpen}>
+        <Checkout>
+          <Header>
+            <Exit
+              onClick={() => {
+                setCheckoutOpen("false")
+              }}
+            >
+              x
+            </Exit>
+            <h1>Cart</h1>
+          </Header>
+          <Content>
+            {lineItems && lineItems.length > 0 ? (
+              lineItems.map(item => (
+                <Item
+                  item={item}
+                  key={item.id}
+                  removeFromCheckout={removeFromCheckout}
+                />
+              ))
+            ) : (
+              <EmptyText>YOUR CART IS EMPTY</EmptyText>
+            )}
+          </Content>
+          <Footer>
+            <div>
+              <h5>
+                ALL SALES ARE FINAL.
+                <br />
+                SHIPPING CAN TAKE UP TO FOUR WEEKS.
+              </h5>
+              <h4>Subtotal: ${subtotalPrice}</h4>
+            </div>
+            <a
+              style={{
+                border: "1px solid black",
+                borderRadius: "20px",
+                padding: "20px 15px"
+              }}
+              href={webUrl}
+            >
+              CHECKOUT
+            </a>
+          </Footer>
+        </Checkout>
+      </Container>
+    </div>
   )
 }

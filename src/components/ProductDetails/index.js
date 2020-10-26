@@ -103,7 +103,6 @@ export default function ProductDetails(props) {
   const { product, checkout, setCheckout, client, setCheckoutOpen } = props
 
   const [curVariantId, setCurVariantId] = useState(0)
-  const [dimsOpen, setDimsOpen] = useState("false")
 
   async function addToCheckout() {
     const lineItemsToAdd = { variantId: curVariantId, quantity: 1 }
@@ -114,19 +113,12 @@ export default function ProductDetails(props) {
     setCheckout(newCheckout)
     setCheckoutOpen("true")
   }
-  const toggleDims = useCallback(() => {
-    setDimsOpen(dimsOpen === "true" ? "false" : "true")
-  }, [dimsOpen])
 
   const { title, variants, descriptionHtml } = product
 
   const description = ReactHtmlParser(descriptionHtml).filter(
     obj => obj.type !== "meta" && obj.type !== "table"
   )
-
-  // const dims = ReactHtmlParser(descriptionHtml).find(
-  //   obj => obj.type === "table"
-  // ) || <b>Dimensions not available.</b>
 
   return (
     <Container>
@@ -154,6 +146,7 @@ export default function ProductDetails(props) {
               variant={variant}
               curVariantId={curVariantId}
               setCurVariantId={setCurVariantId}
+              key={variant.id}
             />
           ))}
         </VariantContainer>

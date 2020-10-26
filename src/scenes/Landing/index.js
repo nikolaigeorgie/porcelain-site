@@ -1,6 +1,6 @@
 /* eslint-disable func-names */
 /* eslint-disable react/jsx-no-bind */
-import React, { useMemo, Suspense } from "react"
+import React, { Suspense } from "react"
 import { Canvas } from "react-three-fiber"
 
 import VoronWall from "components/VoronWall"
@@ -10,15 +10,11 @@ import "./styles.scss"
 export default function Landing(props) {
   const { setLoading } = props
   let numClicks = 0
-  document.body.style.overflowY = "hidden"
 
   const clicked = function() {
-    // console.log("parent received click")
-    // console.log(numClicks)
     numClicks++
 
     if (numClicks > 3) {
-      document.body.style.overflowY = "scroll"
       document
         .getElementsByClassName("canvas-container")[0]
         .classList.add("finished")
