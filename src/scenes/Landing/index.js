@@ -2,10 +2,21 @@
 /* eslint-disable react/jsx-no-bind */
 import React, { Suspense } from "react"
 import { Canvas } from "react-three-fiber"
+import styled from "styled-components/macro"
 
 import VoronWall from "components/VoronWall"
-
 import "./styles.scss"
+
+const InfoText = styled.div`
+  position: absolute;
+  transform: translateX(-50%);
+  left: 50%;
+  top: 59%;
+  background: white;
+  border-radius: 10px;
+  color: black;
+  padding: 10px;
+`
 
 export default function Landing(props) {
   const { setLoading } = props
@@ -40,6 +51,7 @@ export default function Landing(props) {
           </Suspense>
         </Canvas>
       )}
+      <InfoText>Click Anywhere</InfoText>
     </div>
   )
 }
