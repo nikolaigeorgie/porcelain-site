@@ -7,6 +7,7 @@ import FullScreenLoading from "components/FullScreenLoading"
 import VideoBackground from "components/VideoBackground"
 import Cart from "components/Cart"
 import PorcelainBG from "components/Images/Porcelain_Background.png"
+import LoadingGif from "components/Images/loading.gif"
 import { ShopifyContext } from "services/shopify"
 
 import Landing from "../Landing"
@@ -45,7 +46,7 @@ export default function Shop(props) {
       {(!products || isLoading) && (
         <div>
           <FullScreenLoading />
-          <LoadingText>LOADING...</LoadingText>
+          <LoadingText><img src={LoadingGif} alt="LOADING..." /></LoadingText>
         </div>
       )}
       {products && (

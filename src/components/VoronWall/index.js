@@ -2,31 +2,44 @@
 /* eslint-disable no-multi-assign */
 /* eslint-disable func-names */
 import React, { useEffect } from "react"
-import * as THREE from "three"
-import { useLoader, useFrame } from "react-three-fiber"
+import { useLoader, useFrame, useThree } from "react-three-fiber"
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader"
-import { draco, useFBXLoader } from "drei"
+import { draco } from "drei"
 
 export default function VoronWall(props) {
   const { clicked, setLoading } = props
+  const { scene, raycaster } = useThree()
 
-  const fbx = useFBXLoader("/porcelain.fbx")
+  const { nodes } = useLoader(GLTFLoader, "/porcelain.glb")
 
-  fbx.rotation.x = -Math.PI / 2
-  fbx.position.y = -190
+  nodes.Voronoi_Fracture.rotation.x = -Math.PI / 2
+  nodes.Voronoi_Fracture.scale.y = nodes.Voronoi_Fracture.scale.x = nodes.Voronoi_Fracture.scale.z = 300
+
+  // for (let i = 0; i < 20; i++) {
+  //   nodes.Voronoi_Fracture.children[i].material = new MeshPhongMaterial({color: "blue"})
+  // }
+
+  scene.add(nodes.Voronoi_Fracture)
+
   let animationState = false
   let numClicks = 0
-  if (fbx) {
+  let intersect
+  if (nodes) {
     setLoading(false)
   }
-  console.log(fbx)
-
   const onLandingClick = () => {
-    if (animationState || fbx === undefined) {
+    if (animationState) {
       return
     }
     animationState = true
     numClicks++
+    for (let i = 0; i < nodes.Voronoi_Fracture.children.length; i++) {
+      if (
+        raycaster.intersectObject(nodes.Voronoi_Fracture.children[i]).length
+      ) {
+        intersect = nodes.Voronoi_Fracture.children[i]
+      }
+    }
     if (numClicks <= 3) {
       setTimeout(function() {
         animationState = false
@@ -44,28 +57,34 @@ export default function VoronWall(props) {
   }
 
   useFrame(({ clock, delta }) => {
-    if (animationState && fbx.children[0].scale.x > 0) {
-      for (let i = 0; i < fbx.children.length; i++) {
-        if (fbx.children[i].geometry) {
-          fbx.children[i].scale.x -= 0.01
-          fbx.children[i].scale.y -= 0.01
-          fbx.children[i].scale.z -= 0.01
-          fbx.children[i].position.x -= 0.01
-          fbx.children[i].position.y -= 0.01
-          fbx.children[i].rotation.x -= 0.04 * (Math.random() - 0.5)
-          fbx.children[i].rotation.y -= 0.04 * (Math.random() - 0.5)
+    if (intersect && animationState && intersect.scale.x >= 0) {
+      intersect.scale.x -= 0.007 * numClicks
+      intersect.scale.y -= 0.007 * numClicks
+      intersect.scale.z -= 0.007 * numClicks
+    }
+    if (animationState) {
+      for (let i = 0; i < nodes.Voronoi_Fracture.children.length; i++) {
+        if (
+          nodes.Voronoi_Fracture.children[i].geometry &&
+          nodes.Voronoi_Fracture.children[i].scale.x > 0
+        ) {
+          nodes.Voronoi_Fracture.children[i].scale.x -= 0.0005
+          nodes.Voronoi_Fracture.children[i].scale.y -= 0.0005
+          nodes.Voronoi_Fracture.children[i].scale.z -= 0.0005
+          // nodes.Voronoi_Fracture.children[i].position.x -= 0.001
+          // nodes.Voronoi_Fracture.children[i].position.y -= 0.001
         }
       }
     }
   })
 
   useEffect(() => {
-    if (window.innerWidth < 800 && fbx) {
-      fbx.position.y = -203
+    if (window.innerWidth < 800 && nodes) {
+      nodes.Voronoi_Fracture.scale.y = nodes.Voronoi_Fracture.scale.x = nodes.Voronoi_Fracture.scale.z = 283
     }
     document.addEventListener("click", onLandingClick)
     return () => document.removeEventListener("click", onLandingClick)
   })
 
-  return <primitive object={fbx} dispose={null} />
+  return <></>
 }

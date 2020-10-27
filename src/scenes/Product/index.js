@@ -5,6 +5,7 @@ import { Link } from "react-router-dom"
 import ProductImages from "components/ProductImages"
 import ProductDetails from "components/ProductDetails"
 import PorcelainBG from "components/Images/Porcelain_Background.png"
+import LoadingGif from "components/Images/loading.gif"
 import Logo from "components/Logo"
 import Cart from "components/Cart"
 import VideoBackground from "components/VideoBackground"
@@ -44,7 +45,11 @@ export default function Product(props) {
   const shopify = useContext(ShopifyContext)
 
   if (!shopify.products) {
-    return <LoadingText>Loading...</LoadingText>
+    return (
+      <LoadingText>
+        <img src={LoadingGif} alt="LOADING..." />
+      </LoadingText>
+    )
   }
 
   console.log(shopify.products)

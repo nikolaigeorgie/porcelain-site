@@ -51,7 +51,7 @@ export default function Landing(props) {
           </Suspense>
         </Canvas>
       )}
-      <InfoText>Click Anywhere</InfoText>
+      <InfoText>CLICK ANYWHERE</InfoText>
     </div>
   )
 }
