@@ -13,7 +13,8 @@ export default function VoronWall(props) {
   const { nodes } = useLoader(GLTFLoader, "/porcelain.glb")
 
   nodes.Voronoi_Fracture.rotation.x = -Math.PI / 2
-  nodes.Voronoi_Fracture.scale.y = nodes.Voronoi_Fracture.scale.x = nodes.Voronoi_Fracture.scale.z = 300
+  nodes.Voronoi_Fracture.scale.y = nodes.Voronoi_Fracture.scale.x = nodes.Voronoi_Fracture.scale.z = 326
+  // nodes.Voronoi_Fracture.scale.y = 500
 
   // for (let i = 0; i < 20; i++) {
   //   nodes.Voronoi_Fracture.children[i].material = new MeshPhongMaterial({color: "blue"})
