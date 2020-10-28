@@ -49,14 +49,6 @@ const Image = styled.img`
     transform: translateX(-50%);
   }
 `
-
-const Title = styled.h2`
-  text-align: center;
-  margin: 0.5rem 0;
-  font-weight: 100;
-  color: white !important;
-`
-
 const Subtitle = styled.h3`
   text-align: center;
   margin-top: 0;
@@ -75,7 +67,6 @@ export default function ProductListing(props) {
       <Link style={{ textDecoration: "none" }} to={`/${handle}`}>
         <Image src={images[0].src} />
         <Description>
-          <Title>{title}</Title>
           <Subtitle>${price}</Subtitle>
         </Description>
       </Link>
