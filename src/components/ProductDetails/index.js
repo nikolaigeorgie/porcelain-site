@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react"
+import React, { useState } from "react"
 import styled from "styled-components/macro"
 import ReactHtmlParser from "react-html-parser"
 
@@ -14,6 +14,7 @@ const Container = styled.div`
   box-sizing: border-box;
   overflow-y: auto;
   color: white;
+  text-shadow: 3px 3px 2px black;
 
   & > * {
     td {
@@ -43,6 +44,10 @@ const VariantContainer = styled.div`
   display: flex;
   margin-top: 20px;
   margin-bottom: 20px;
+
+  @media screen and (max-width: 875px) {
+    justify-content: center;
+  }
 `
 
 const BuyButton = styled.button`
@@ -57,6 +62,7 @@ const BuyButton = styled.button`
   font-size: 18px;
   border-radius: 30px;
   border: 2px solid white;
+  box-shadow: 0px 5px 2px black;
 
   &:hover {
     background-color: white;
@@ -69,6 +75,7 @@ const BuyButton = styled.button`
 const BuyNowButton = styled(BuyButton)`
   background: white;
   color: #41bbe2;
+  box-shadow: 0px 5px 2px black;
 
   &:hover {
     background: red;
@@ -83,12 +90,41 @@ const ButtonContainer = styled.div`
 
 const SelectSize = styled.div`
   font-size: 1.3rem;
+
+  @media screen and (max-width: 875px) {
+    display: none;
+  }
 `
 
 const Description = styled.div`
   font-size: 1.3rem;
   margin-bottom: 25px;
   text-transform: uppercase;
+
+  @media screen and (max-width: 875px) {
+    display: none;
+  }
+`
+
+const Title = styled.div`
+  font-size: 1.3rem;
+  font-weight: lighter;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+
+  @media screen and (max-width: 875px) {
+    display: none;
+  }
+`
+
+const Price = styled.div`
+  font-size: 1.3rem;
+  font-weight: lighter;
+  margin-bottom: 10px;
+
+  @media screen and (max-width: 875px) {
+    text-align: center;
+  }
 `
 
 const SalesFinalText = styled.div`
@@ -123,21 +159,10 @@ export default function ProductDetails(props) {
   return (
     <Container>
       <div>
-        <h1
-          style={{
-            fontWeight: "lighter",
-            margin: 0,
-            fontSize: "1.3rem",
-            textTransform: "uppercase"
-          }}
-        >
-          {title}
-        </h1>
+        <Title>{title}</Title>
       </div>
       <div>
-        <h2 style={{ fontWeight: "lighter", fontSize: "1.3rem" }}>
-          ${variants[0].price}
-        </h2>
+        <Price>${variants[0].price}</Price>
         <Description>{description}</Description>
         <SelectSize>Select Size</SelectSize>
         <VariantContainer>

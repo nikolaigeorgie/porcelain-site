@@ -2,7 +2,6 @@
 /* eslint-disable react/jsx-no-bind */
 import React, { Suspense } from "react"
 import { Canvas } from "react-three-fiber"
-import styled from "styled-components/macro"
 
 import VoronWall from "components/VoronWall"
 import "./styles.scss"

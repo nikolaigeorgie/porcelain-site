@@ -29,6 +29,12 @@ const Container = styled.div`
   background-size: cover;
   width: 100%;
   overflow: auto;
+  padding-top: 40px;
+  
+
+  @media (max-height: 900px) {
+    padding-top: 80px;
+  }
 
   @media screen and (max-width: 875px) {
     display: block;

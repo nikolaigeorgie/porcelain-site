@@ -9,7 +9,7 @@ const Container = styled.div`
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
-  z-index: 4;
+  z-index: 14;
   position: fixed;
   top: 0;
   left: 0;
@@ -82,6 +82,10 @@ const Footer = styled.div`
   justify-content: space-between;
   align-items: center;
 
+  @media screen and (max-width: 875px) {
+    flex-direction: column;
+  }
+
   & a {
     font-size: 20px;
     color: rgba(0, 0, 0, 0.5);
@@ -107,7 +111,6 @@ const CartIcon = styled.div`
   position: absolute;
   top: -20px;
   right: 30px;
-  max-height: 10vw;
   z-index: 9;
 `
 
@@ -173,7 +176,7 @@ export default function Cart(props) {
           viewBox="0 0 117 144"
           version="1.1"
           className="cart-icon"
-          style={{ maxWidth: "30px" }}
+          style={{ maxWidth: window.innerWidth < 800 ? "25px" : "30px" }}
         >
           <g
             id="Page-1"

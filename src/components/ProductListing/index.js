@@ -41,6 +41,11 @@ const Image = styled.img`
   width: auto;
   height: 25vh;
 
+  @media screen and (max-width: 875px) {
+    height: auto;
+    width: 80vw;
+  }
+
   &:after {
     content: "";
     position: absolute;
@@ -51,9 +56,10 @@ const Image = styled.img`
 `
 const Subtitle = styled.h3`
   text-align: center;
-  margin-top: 0;
+  margin-top: 10px;
   font-weight: 100;
   color: white !important;
+  text-shadow: 3px 3px 2px black;
 `
 
 export default function ProductListing(props) {

@@ -1,7 +1,9 @@
-import React, { useContext, useState } from "react"
+import React, { useContext, useState, useEffect } from "react"
 import styled from "styled-components/macro"
+import { useLocation } from "react-router-dom"
 
 import LogoLandingPage from "components/LogoLandingPage"
+import Logo from "components/Logo"
 import ProductListing from "components/ProductListing"
 import FullScreenLoading from "components/FullScreenLoading"
 import VideoBackground from "components/VideoBackground"
@@ -38,21 +40,32 @@ const Container = styled.div`
 `
 
 export default function Shop(props) {
-  const { products, setCheckoutOpen } = useContext(ShopifyContext)
+  const { products } = useContext(ShopifyContext)
   const [isLoading, setLoading] = useState(true)
+
+  const location = useLocation()
+
+  useEffect(() => {
+    if (location.search === "?s") {
+      setLoading(false)
+    }
+  }, [location])
 
   return (
     <div>
       {(!products || isLoading) && (
         <div>
           <FullScreenLoading />
-          <LoadingText><img src={LoadingGif} alt="LOADING..." /></LoadingText>
+          <LoadingText>
+            <img src={LoadingGif} alt="LOADING..." />
+          </LoadingText>
         </div>
       )}
       {products && (
         <Container>
-          <Landing setLoading={setLoading} />
-          <LogoLandingPage />
+          {location.search !== "?s" && <Landing setLoading={setLoading} />}
+          {location.search !== "?s" && <LogoLandingPage />}
+          {location.search === "?s" && <Logo />}
           {products.map(product => (
             <ProductListing product={product} key={product.handle} />
           ))}

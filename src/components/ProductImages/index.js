@@ -9,17 +9,17 @@ const Container = styled.div`
   height: 100%;
   position: relative;
   flex-direction: column;
-  margin-top: 50px;
 
   @media screen and (max-width: 875px) {
     height: auto;
-    margin-top: 70px;
   }
 `
 
 const MainImage = styled.img`
   max-width: 100%;
   max-height: 100%;
+  object-fit: contain;
+  margin-bottom: 30px;
 
   @media (max-width: 800px) {
     height: 400px;

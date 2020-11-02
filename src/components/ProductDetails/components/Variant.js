@@ -12,6 +12,7 @@ const VariantButton = styled.button`
   border-radius: 10px;
   border 2px solid white;
   margin-right: 15px;
+  box-shadow: 0px 4px 2px black;
 
   //variant
   background-color: transparent;
