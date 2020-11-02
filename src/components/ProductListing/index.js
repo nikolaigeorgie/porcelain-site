@@ -38,8 +38,7 @@ const Description = styled.div`
 `
 
 const Image = styled.img`
-  width: auto;
-  height: 25vh;
+  width: 270px;
 
   @media screen and (max-width: 875px) {
     height: auto;
@@ -56,7 +55,7 @@ const Image = styled.img`
 `
 const Subtitle = styled.h3`
   text-align: center;
-  margin-top: 10px;
+  margin-top: 20px;
   font-weight: 100;
   color: white !important;
   text-shadow: 3px 3px 2px black;
