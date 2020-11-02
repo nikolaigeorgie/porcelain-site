@@ -22,8 +22,9 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-height: 100vh;
-  justify-content: center;
+  margin-top: 50px;
+  // min-height: 100vh;
+  // justify-content: center;
   // background-image: url(${PorcelainBG});
   // background: linear-gradient(rgba(0,0,0,0.5), rgb(35 0 68 / 80%));
   background-size: cover;
