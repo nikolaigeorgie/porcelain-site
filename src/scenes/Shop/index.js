@@ -23,6 +23,7 @@ const LoadingText = styled.h1`
   justify-content: center;
   align-items: center;
   z-index: 99999;
+  flex-direction: column;
 `
 
 const Container = styled.div`
@@ -58,6 +59,7 @@ export default function Shop(props) {
           <FullScreenLoading />
           <LoadingText>
             <img src={LoadingGif} alt="LOADING..." />
+            <h3>Loading...</h3>
           </LoadingText>
         </div>
       )}

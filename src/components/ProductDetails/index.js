@@ -14,7 +14,7 @@ const Container = styled.div`
   box-sizing: border-box;
   overflow-y: auto;
   color: white;
-  text-shadow: 3px 3px 2px black;
+  text-shadow: 0 2px 4px rgb(0 0 0 / 0.6);
 
   & > * {
     td {
@@ -62,7 +62,7 @@ const BuyButton = styled.button`
   font-size: 18px;
   border-radius: 30px;
   border: 2px solid white;
-  box-shadow: 0px 5px 2px black;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 0.6);
 
   &:hover {
     background-color: white;
@@ -75,7 +75,7 @@ const BuyButton = styled.button`
 const BuyNowButton = styled(BuyButton)`
   background: white;
   color: #41bbe2;
-  box-shadow: 0px 5px 2px black;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 0.6);
 
   &:hover {
     background: red;

@@ -58,7 +58,7 @@ const Subtitle = styled.h3`
   margin-top: 20px;
   font-weight: 100;
   color: white !important;
-  text-shadow: 3px 3px 2px black;
+  text-shadow: 0 2px 4px rgb(0 0 0 / 0.6);
 `
 
 export default function ProductListing(props) {

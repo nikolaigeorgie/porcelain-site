@@ -23,7 +23,6 @@ const Checkout = styled.div`
   width: 80vw;
   height: 80vh;
   background-color: white;
-  border-radius: 10px;
   padding: 20px;
   box-sizing: border-box;
   position: relative;
@@ -37,7 +36,6 @@ const Checkout = styled.div`
 
 const Header = styled.div`
   text-align: center;
-  position: relative;
 
   & h1 {
     text-transform: uppercase;
@@ -54,6 +52,7 @@ const Exit = styled.button`
   border: none;
   background-color: transparent;
   transition: 0.3s;
+  top: 20px;
 
   &:hover {
     cursor: pointer;
@@ -74,23 +73,18 @@ const Content = styled.div`
 
 const Footer = styled.div`
   color: black;
-  position: absolute;
-  bottom: 5px;
-  width: 36%;
-  right: 50px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
+  position: relative;
 
   @media screen and (max-width: 875px) {
     flex-direction: column;
   }
 
   & a {
-    font-size: 20px;
-    color: rgba(0, 0, 0, 0.5);
     transition: 0.3s;
-    text-decoration: none;
 
     &:hover {
       color: black;
@@ -100,10 +94,6 @@ const Footer = styled.div`
     @media screen and (max-width: 650px) {
       font-size: 15px;
     }
-  }
-
-  @media screen and (max-width: 850px) {
-    width: 90%;
   }
 `
 
@@ -132,6 +122,21 @@ const CartIndicator = styled.div`
 
 const EmptyText = styled.h4`
   text-align: center;
+  top: 50%;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+`
+
+const CheckoutButton = styled.a`
+  text-decoration: underline !important;
+  color: black !important;
+`
+
+const ControlSpacer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 `
 
 export default function Cart(props) {
@@ -216,43 +221,38 @@ export default function Cart(props) {
                 setCheckoutOpen("false")
               }}
             >
-              x
+              X
             </Exit>
             <h1>Cart</h1>
           </Header>
-          <Content>
-            {lineItems && lineItems.length > 0 ? (
-              lineItems.map(item => (
-                <Item
-                  item={item}
-                  key={item.id}
-                  removeFromCheckout={removeFromCheckout}
-                />
-              ))
-            ) : (
-              <EmptyText>YOUR CART IS EMPTY</EmptyText>
-            )}
-          </Content>
-          <Footer>
-            <div>
-              <h5>
-                ALL SALES ARE FINAL.
-                <br />
-                SHIPPING CAN TAKE UP TO FOUR WEEKS.
-              </h5>
-              <h4>Subtotal: ${subtotalPrice}</h4>
-            </div>
-            <a
-              style={{
-                border: "1px solid black",
-                borderRadius: "20px",
-                padding: "20px 15px"
-              }}
-              href={webUrl}
-            >
-              CHECKOUT
-            </a>
-          </Footer>
+          {lineItems && lineItems.length > 0 ? (
+            <>
+              <Content>
+                {lineItems.map(item => (
+                  <Item
+                    item={item}
+                    key={item.id}
+                    removeFromCheckout={removeFromCheckout}
+                  />
+                ))}
+              </Content>
+              <Footer>
+                <div>
+                  <h5>
+                    ALL SALES ARE FINAL.
+                    <br />
+                    SHIPPING CAN TAKE UP TO FOUR WEEKS.
+                  </h5>
+                  <ControlSpacer>
+                    <h4>Subtotal: ${subtotalPrice}</h4>
+                    <CheckoutButton href={webUrl}>CHECKOUT</CheckoutButton>
+                  </ControlSpacer>
+                </div>
+              </Footer>
+            </>
+          ) : (
+            <EmptyText>YOUR CART IS EMPTY</EmptyText>
+          )}
         </Checkout>
       </Container>
     </div>

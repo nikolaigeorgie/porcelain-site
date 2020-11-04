@@ -10,9 +10,9 @@ const VariantButton = styled.button`
   height: 50px;
   transition: 0.15s;
   border-radius: 10px;
-  border 2px solid white;
+  border: 2px solid white;
   margin-right: 15px;
-  box-shadow: 0px 4px 2px black;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 0.6);
 
   //variant
   background-color: transparent;

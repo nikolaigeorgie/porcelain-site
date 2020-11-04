@@ -6,12 +6,12 @@ import "./fontawesome"
 
 export default createGlobalStyle`
   @font-face {
-    font-family: 'VCR';
-    src: url('VCR_OSD_MONO.ttf');
+    font-family: 'Merit';
+    src: url('merit4.ttf');
   }
 
   body {
-    font-family: "VCR", Avenir, Lato, Roboto, sans-serif;
+    font-family: "Merit", Avenir, Lato, Roboto, sans-serif;
     overflow: auto;
     overflow-x: hidden;
     background: black;
