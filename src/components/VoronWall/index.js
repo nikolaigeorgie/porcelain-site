@@ -10,17 +10,20 @@ export default function VoronWall(props) {
   const { clicked, setLoading } = props
   const { scene, raycaster } = useThree()
 
-  const { nodes } = useLoader(GLTFLoader, "/porcelain.glb")
+  const { nodes } = useLoader(GLTFLoader, "/porcelain2.glb")
 
-  nodes.Voronoi_Fracture.rotation.x = -Math.PI / 2
-  nodes.Voronoi_Fracture.scale.y = nodes.Voronoi_Fracture.scale.x = nodes.Voronoi_Fracture.scale.z = 326
-  // nodes.Voronoi_Fracture.scale.y = 500
+  let mesh
 
-  // for (let i = 0; i < 20; i++) {
-  //   nodes.Voronoi_Fracture.children[i].material = new MeshPhongMaterial({color: "blue"})
-  // }
+  nodes[Object.keys(nodes)[0]].parent.rotation.x = -Math.PI / 2
 
-  scene.add(nodes.Voronoi_Fracture)
+  for (let i = 0; i < Object.keys(nodes).length; i++) {
+    mesh = nodes[Object.keys(nodes)[i]]
+    scene.add(mesh)
+    window.innerWidth > 800
+      ? (mesh.scale.x = mesh.scale.y = 10)
+      : (mesh.scale.x = mesh.scale.y = 5)
+    mesh.scale.z = 180
+  }
 
   let animationState = false
   let numClicks = 0
@@ -34,11 +37,9 @@ export default function VoronWall(props) {
     }
     animationState = true
     numClicks++
-    for (let i = 0; i < nodes.Voronoi_Fracture.children.length; i++) {
-      if (
-        raycaster.intersectObject(nodes.Voronoi_Fracture.children[i]).length
-      ) {
-        intersect = nodes.Voronoi_Fracture.children[i]
+    for (let i = 0; i < Object.keys(nodes).length; i++) {
+      if (raycaster.intersectObject(nodes[Object.keys(nodes)[i]]).length) {
+        intersect = nodes[Object.keys(nodes)[i]]
       }
     }
     if (numClicks <= 3) {
@@ -59,30 +60,28 @@ export default function VoronWall(props) {
 
   useFrame(({ clock, delta }) => {
     if (intersect && animationState && intersect.scale.x >= 0) {
-      intersect.scale.x -= 0.007 * numClicks
-      intersect.scale.y -= 0.007 * numClicks
-      intersect.scale.z -= 0.007 * numClicks
+      intersect.scale.x -= 0.07 * numClicks
+      intersect.scale.y -= 0.07 * numClicks
+      intersect.scale.z -= 0.07 * numClicks
+      // intersect.rotation.x -= 0.07 * numClicks
     }
     if (animationState) {
-      for (let i = 0; i < nodes.Voronoi_Fracture.children.length; i++) {
+      for (let i = 0; i < Object.keys(nodes).length; i++) {
         if (
-          nodes.Voronoi_Fracture.children[i].geometry &&
-          nodes.Voronoi_Fracture.children[i].scale.x > 0
+          nodes[Object.keys(nodes)[i]].geometry &&
+          nodes[Object.keys(nodes)[i]].scale.x > 0
         ) {
-          nodes.Voronoi_Fracture.children[i].scale.x -= 0.0005
-          nodes.Voronoi_Fracture.children[i].scale.y -= 0.0005
-          nodes.Voronoi_Fracture.children[i].scale.z -= 0.0005
-          // nodes.Voronoi_Fracture.children[i].position.x -= 0.001
-          // nodes.Voronoi_Fracture.children[i].position.y -= 0.001
+          nodes[Object.keys(nodes)[i]].scale.x -= 0.0005
+          nodes[Object.keys(nodes)[i]].scale.y -= 0.0005
+          nodes[Object.keys(nodes)[i]].scale.z -= 0.0005
+          // nodes[Object.keys(nodes)[i]].position.x -= 0.001
+          // nodes[Object.keys(nodes)[i]].position.y -= 0.001
         }
       }
     }
   })
 
   useEffect(() => {
-    if (window.innerWidth < 800 && nodes) {
-      nodes.Voronoi_Fracture.scale.y = nodes.Voronoi_Fracture.scale.x = nodes.Voronoi_Fracture.scale.z = 283
-    }
     document.addEventListener("click", onLandingClick)
     return () => document.removeEventListener("click", onLandingClick)
   })
