@@ -59,7 +59,6 @@ export default function Shop(props) {
           <FullScreenLoading />
           <LoadingText>
             <img src={LoadingGif} alt="LOADING..." />
-            <h3>Loading...</h3>
           </LoadingText>
         </div>
       )}
