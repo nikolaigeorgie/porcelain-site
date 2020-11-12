@@ -32,8 +32,10 @@ export default function Landing(props) {
           camera={{ position: [0, 6, 0], near: 0.01, far: 400 }}
           className="canvas"
           raycaster
+          colorManagement
         >
-          <ambientLight intensity={2} />
+          <ambientLight intensity={1} />
+          <fog attach="fog" args={[0x000000, 10, 50]} />
           <Suspense fallback={<></>}>
             <VoronWall clicked={clicked} setLoading={setLoading} />
           </Suspense>

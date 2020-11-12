@@ -2,6 +2,7 @@
 /* eslint-disable no-multi-assign */
 /* eslint-disable func-names */
 import React, { useEffect } from "react"
+import * as THREE from "three"
 import { useLoader, useFrame, useThree } from "react-three-fiber"
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader"
 import { draco } from "drei"
@@ -13,6 +14,11 @@ export default function VoronWall(props) {
   const { nodes } = useLoader(GLTFLoader, "/porcelain2.glb")
 
   let mesh
+
+  console.log(nodes)
+  if (nodes && nodes.length > 0) {
+    nodes[0].material.map.encoding = THREE.RGBM16Encoding
+  }
 
   nodes[Object.keys(nodes)[0]].parent.rotation.x = -Math.PI / 2
 
@@ -27,7 +33,8 @@ export default function VoronWall(props) {
 
   let animationState = false
   let numClicks = 0
-  let intersect
+  const intersect = []
+  const furthestBack = 20
   if (nodes) {
     setLoading(false)
   }
@@ -39,7 +46,9 @@ export default function VoronWall(props) {
     numClicks++
     for (let i = 0; i < Object.keys(nodes).length; i++) {
       if (raycaster.intersectObject(nodes[Object.keys(nodes)[i]]).length) {
-        intersect = nodes[Object.keys(nodes)[i]]
+        if (!intersect.includes(intersect.push)) {
+          intersect.push(nodes[Object.keys(nodes)[i]])
+        }
       }
     }
     if (numClicks <= 3) {
@@ -58,25 +67,31 @@ export default function VoronWall(props) {
     }
   }
 
-  useFrame(({ clock, delta }) => {
-    if (intersect && animationState && intersect.scale.x >= 0) {
-      intersect.scale.x -= 0.07 * numClicks
-      intersect.scale.y -= 0.07 * numClicks
-      intersect.scale.z -= 0.07 * numClicks
-      // intersect.rotation.x -= 0.07 * numClicks
-    }
-    if (animationState) {
+  useFrame(({ clock }, delta) => {
+    if (numClicks > 3) {
       for (let i = 0; i < Object.keys(nodes).length; i++) {
-        if (
-          nodes[Object.keys(nodes)[i]].geometry &&
-          nodes[Object.keys(nodes)[i]].scale.x > 0
-        ) {
-          nodes[Object.keys(nodes)[i]].scale.x -= 0.0005
-          nodes[Object.keys(nodes)[i]].scale.y -= 0.0005
-          nodes[Object.keys(nodes)[i]].scale.z -= 0.0005
-          // nodes[Object.keys(nodes)[i]].position.x -= 0.001
-          // nodes[Object.keys(nodes)[i]].position.y -= 0.001
-        }
+        const node = nodes[Object.keys(nodes)[i]]
+        const hash = hashString(node.uuid)
+        const sinX = (hash % 20) - 10 > 1 ? 1 : -1
+        const sinY = (hash % 8) - 4 > 1 ? 1 : -1
+        node.position.x += ((hash % 5) + 1) * sinX * delta * 0.5
+        node.position.y += ((hash % 5) + 1) * sinY * delta * 0.5
+        node.position.z -= furthestBack * delta
+        node.rotation.x += delta * ((hash % 5) + 1) * 0.1
+        node.rotation.y += delta * ((hash % 5) + 1) * 0.1
+        node.rotation.z += delta * ((hash % 5) + 1) * 0.1
+      }
+    } else if (intersect) {
+      for (const [i, node] of intersect.entries()) {
+        const hash = hashString(node.uuid)
+        const sinX = (hash % 20) - 10 > 1 ? 1 : -1
+        const sinY = (hash % 8) - 4 > 1 ? 1 : -1
+        node.position.x += ((hash % 5) + 1) * sinX * delta * 0.5
+        node.position.y += ((hash % 5) + 1) * sinY * delta * 0.5
+        node.position.z -= furthestBack * delta
+        node.rotation.x += delta * ((hash % 5) + 1) * 0.1
+        node.rotation.y += delta * ((hash % 5) + 1) * 0.1
+        node.rotation.z += delta * ((hash % 5) + 1) * 0.1
       }
     }
   })
@@ -87,4 +102,18 @@ export default function VoronWall(props) {
   })
 
   return <></>
+}
+
+const hashString = s => {
+  let hash = 0,
+    i,
+    chr
+  for (i = 0; i < s.length; i++) {
+    chr = s.charCodeAt(i)
+    // eslint-disable-next-line no-bitwise
+    hash = (hash << 5) - hash + chr
+    // eslint-disable-next-line no-bitwise
+    hash |= 0 // Convert to 32bit integer
+  }
+  return hash
 }
