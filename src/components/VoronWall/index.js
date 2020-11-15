@@ -11,24 +11,34 @@ export default function VoronWall(props) {
   const { clicked, setLoading } = props
   const { scene, raycaster } = useThree()
 
-  const { nodes } = useLoader(GLTFLoader, "/porcelain2.glb")
+  const { nodes } = useLoader(GLTFLoader, "/porcelain3.glb")
 
   let mesh
 
-  console.log(nodes)
   if (nodes && nodes.length > 0) {
     nodes[0].material.map.encoding = THREE.RGBM16Encoding
   }
 
-  nodes[Object.keys(nodes)[0]].parent.rotation.x = -Math.PI / 2
+  console.log(nodes)
+
+  nodes[Object.keys(nodes)[12]].rotation.y = Math.PI
 
   for (let i = 0; i < Object.keys(nodes).length; i++) {
     mesh = nodes[Object.keys(nodes)[i]]
+
+    if (Object.keys(nodes)[i] === "Camera") {
+      // eslint-disable-next-line no-continue
+      continue
+    }
+
     scene.add(mesh)
-    window.innerWidth > 800
-      ? (mesh.scale.x = mesh.scale.y = 10)
-      : (mesh.scale.x = mesh.scale.y = 5)
-    mesh.scale.z = 180
+    const locScale = window.innerWidth > 800 ? 15 : 10
+    mesh.scale.set(locScale, locScale, locScale)
+    mesh.position.y = -1 // into the page
+    mesh.position.z = 4 // up and down
+    mesh.position.x = 3 // left and right
+    mesh.rotation.y = Math.PI
+    mesh.rotation.z = Math.PI
   }
 
   let animationState = false
@@ -75,11 +85,11 @@ export default function VoronWall(props) {
         const sinX = (hash % 20) - 10 > 1 ? 1 : -1
         const sinY = (hash % 8) - 4 > 1 ? 1 : -1
         node.position.x += ((hash % 5) + 1) * sinX * delta * 0.5
-        node.position.y += ((hash % 5) + 1) * sinY * delta * 0.5
-        node.position.z -= furthestBack * delta
+        node.position.z += ((hash % 5) + 1) * sinY * delta * 0.5
+        node.position.y -= furthestBack * delta
         node.rotation.x += delta * ((hash % 5) + 1) * 0.1
-        node.rotation.y += delta * ((hash % 5) + 1) * 0.1
         node.rotation.z += delta * ((hash % 5) + 1) * 0.1
+        node.rotation.y += delta * ((hash % 5) + 1) * 0.1
       }
     } else if (intersect) {
       for (const [i, node] of intersect.entries()) {
@@ -87,11 +97,11 @@ export default function VoronWall(props) {
         const sinX = (hash % 20) - 10 > 1 ? 1 : -1
         const sinY = (hash % 8) - 4 > 1 ? 1 : -1
         node.position.x += ((hash % 5) + 1) * sinX * delta * 0.5
-        node.position.y += ((hash % 5) + 1) * sinY * delta * 0.5
-        node.position.z -= furthestBack * delta
+        node.position.z += ((hash % 5) + 1) * sinY * delta * 0.5
+        node.position.y -= furthestBack * delta
         node.rotation.x += delta * ((hash % 5) + 1) * 0.1
-        node.rotation.y += delta * ((hash % 5) + 1) * 0.1
         node.rotation.z += delta * ((hash % 5) + 1) * 0.1
+        node.rotation.y += delta * ((hash % 5) + 1) * 0.1
       }
     }
   })

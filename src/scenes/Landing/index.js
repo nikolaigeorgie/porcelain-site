@@ -35,7 +35,6 @@ export default function Landing(props) {
           colorManagement
         >
           <ambientLight intensity={1} />
-          <fog attach="fog" args={[0x000000, 10, 50]} />
           <Suspense fallback={<></>}>
             <VoronWall clicked={clicked} setLoading={setLoading} />
           </Suspense>
