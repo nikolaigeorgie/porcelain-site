@@ -2,8 +2,10 @@
 /* eslint-disable react/jsx-no-bind */
 import React, { Suspense } from "react"
 import { Canvas } from "react-three-fiber"
+import * as THREE from "three"
 
 import VoronWall from "components/VoronWall"
+
 import "./styles.scss"
 
 export default function Landing(props) {
@@ -27,14 +29,14 @@ export default function Landing(props) {
     <div className="canvas-container">
       {numClicks < 3 && (
         <Canvas
-          gl
+          gl={{ outputEncoding: THREE.LinearEncoding, gammaOutput: true }}
           shadowMap
           camera={{ position: [0, 6, 0], near: 0.01, far: 400 }}
           className="canvas"
           raycaster
           colorManagement
         >
-          <ambientLight intensity={1} />
+          <ambientLight intensity={0.8} />
           <Suspense fallback={<></>}>
             <VoronWall clicked={clicked} setLoading={setLoading} />
           </Suspense>

@@ -1,16 +1,17 @@
 .canvas-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    width: 100%;
-    z-index: 10;
-    opacity: 1;
-    transition: opacity 3s;
-    transition-delay: 0.62s;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  z-index: 10;
+  opacity: 1;
+  transition: opacity 3s;
+  transition-delay: 0.62s;
+  filter: contrast(1.5);
 }
 
 .finished {
-    opacity: 0;
-    pointer-events: none !important;
+  opacity: 0;
+  pointer-events: none !important;
 }
