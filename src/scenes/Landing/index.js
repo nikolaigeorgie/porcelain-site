@@ -29,7 +29,10 @@ export default function Landing(props) {
     <div className="canvas-container">
       {numClicks < 3 && (
         <Canvas
-          gl={{ outputEncoding: THREE.LinearEncoding, gammaOutput: true }}
+          gl={{
+            outputEncoding: THREE.sRGBEncoding,
+            toneMapping: THREE.ACESFilmicToneMapping
+          }}
           shadowMap
           camera={{ position: [0, 6, 0], near: 0.01, far: 400 }}
           className="canvas"

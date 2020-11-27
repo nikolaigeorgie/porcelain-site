@@ -8,7 +8,8 @@
   opacity: 1;
   transition: opacity 3s;
   transition-delay: 0.62s;
-  filter: contrast(1.5);
+  filter: brightness(0.85) brightness(0.95) saturate(0.8) contrast(1.1)
+    brightness(1.4);
 }
 
 .finished {

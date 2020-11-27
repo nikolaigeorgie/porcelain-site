@@ -29,10 +29,6 @@
     &:focus {
       outline: none;
     }
-
-    &.no-shadow {
-      display: none;
-    }
   }
 
   &:focus {
@@ -46,13 +42,5 @@
 
   @media screen and (max-width: 400px) {
     width: 180px;
-  }
-
-  & .logo {
-    display: none;
-
-    &.no-shadow {
-      display: block;
-    }
   }
 }

@@ -2,7 +2,7 @@ import React from "react"
 
 import "./styles.scss"
 
-import PorcelainLogo from "../Images/porcelain.png"
+import PorcelainLogo from "../Images/porcelain.gif"
 
 export default function Logo() {
   return (
