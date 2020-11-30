@@ -5,11 +5,10 @@ import React, { useEffect } from "react"
 import * as THREE from "three"
 import { useLoader, useFrame, useThree } from "react-three-fiber"
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader"
-import { draco } from "drei"
 
 export default function VoronWall(props) {
   const { clicked, setLoading } = props
-  const { scene, raycaster } = useThree()
+  const { scene, raycaster, gl } = useThree()
 
   const { nodes } = useLoader(GLTFLoader, "/porcelain3.glb")
 
@@ -18,8 +17,6 @@ export default function VoronWall(props) {
   if (nodes && nodes.length > 0) {
     nodes[0].material.map.encoding = THREE.RGBM16Encoding
   }
-
-  console.log(nodes)
 
   nodes[Object.keys(nodes)[12]].rotation.y = Math.PI
 
@@ -39,6 +36,11 @@ export default function VoronWall(props) {
     mesh.position.x = 0 // left and right
     mesh.rotation.y = Math.PI
     mesh.rotation.z = Math.PI
+
+    if (mesh.material) {
+      mesh.material.map.minFilter = THREE.LinearFilter
+      mesh.material.map.anisotropy = gl.capabilities.getMaxAnisotropy()
+    }
   }
 
   let animationState = false
