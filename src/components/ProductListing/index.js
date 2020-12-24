@@ -4,14 +4,15 @@ import styled from "styled-components"
 
 const Container = styled.div`
   flex: 0 auto;
-  width: 100%;
   max-width: 300px;
-  padding: 2rem 0.5rem;
+  padding: 0 1rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
+  height: 50%;
+  width: 50%;
 
   &:first-of-type {
     margin-top: 0;
@@ -26,6 +27,13 @@ const Container = styled.div`
   & > * {
     user-select: none;
   }
+
+  & > a {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 `
 
 const Description = styled.div`
@@ -38,12 +46,9 @@ const Description = styled.div`
 `
 
 const Image = styled.img`
-  width: 270px;
-
-  @media screen and (max-width: 875px) {
-    height: auto;
-    width: 80vw;
-  }
+  width: 100%;
+  object-fit: contain;
+  height: 70%;
 
   &:after {
     content: "";

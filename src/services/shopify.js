@@ -15,16 +15,23 @@ export function ShopifyProvider(props) {
   const [checkout, setCheckout] = useState()
   const [checkoutOpen, setCheckoutOpen] = useState("false")
 
-  console.log(client)
-
   useEffect(() => {
     if (!products && !checkout) {
+      const id = localStorage.getItem("id")
+
       client.product
         .fetchAll()
         .then(shopifyProducts => setProducts(shopifyProducts))
-      client.checkout
-        .create()
-        .then(shopifyCheckout => setCheckout(shopifyCheckout))
+
+      if (id) {
+        client.checkout
+          .fetch(id)
+          .then(shopifyCheckout => setCheckout(shopifyCheckout))
+      } else {
+        client.checkout
+          .create()
+          .then(shopifyCheckout => setCheckout(shopifyCheckout))
+      }
     }
   }, [products, checkout])
 

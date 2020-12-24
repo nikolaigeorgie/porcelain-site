@@ -10,9 +10,10 @@ export default function VoronWall(props) {
   const { clicked, setLoading } = props
   const { scene, raycaster, gl } = useThree()
 
-  const { nodes } = useLoader(GLTFLoader, "/porcelain3.glb")
+  const { nodes } = useLoader(GLTFLoader, "/porcelain7.glb")
 
   let mesh
+  console.log(nodes)
 
   if (nodes && nodes.length > 0) {
     nodes[0].material.map.encoding = THREE.RGBM16Encoding
@@ -29,13 +30,14 @@ export default function VoronWall(props) {
     }
 
     scene.add(mesh)
-    const locScale = window.innerWidth > 800 ? 20 : 10
+    const locScale = window.innerWidth > 800 ? 15 : 10
     mesh.scale.set(locScale, locScale, locScale)
-    mesh.position.y = -3.3 // into the page
+    mesh.position.y = 5.3 // into the page
     mesh.position.z = 0 // up and down
     mesh.position.x = 0 // left and right
+    mesh.rotation.x = -Math.PI / 2
     mesh.rotation.y = Math.PI
-    mesh.rotation.z = Math.PI
+    // mesh.rotation.z = Math.PI
 
     if (mesh.material) {
       mesh.material.map.minFilter = THREE.LinearFilter
@@ -86,9 +88,9 @@ export default function VoronWall(props) {
         const hash = hashString(node.uuid)
         const sinX = (hash % 20) - 10 > 1 ? 1 : -1
         const sinY = (hash % 8) - 4 > 1 ? 1 : -1
-        node.position.x += ((hash % 5) + 1) * sinX * delta * 0.5
-        node.position.z += ((hash % 5) + 1) * sinY * delta * 0.5
-        node.position.y -= furthestBack * delta
+        node.position.x += ((hash % 5) + 1) * sinX * delta * 0.1
+        node.position.z += ((hash % 5) + 1) * sinY * delta * 0.1
+        node.position.y -= furthestBack * delta * 0.1
         node.rotation.x += delta * ((hash % 5) + 1) * 0.1
         node.rotation.z += delta * ((hash % 5) + 1) * 0.1
         node.rotation.y += delta * ((hash % 5) + 1) * 0.1
@@ -98,9 +100,9 @@ export default function VoronWall(props) {
         const hash = hashString(node.uuid)
         const sinX = (hash % 20) - 10 > 1 ? 1 : -1
         const sinY = (hash % 8) - 4 > 1 ? 1 : -1
-        node.position.x += ((hash % 5) + 1) * sinX * delta * 0.5
-        node.position.z += ((hash % 5) + 1) * sinY * delta * 0.5
-        node.position.y -= furthestBack * delta
+        node.position.x += ((hash % 5) + 1) * sinX * delta * 0.1
+        node.position.z += ((hash % 5) + 1) * sinY * delta * 0.1
+        node.position.y -= furthestBack * delta * 0.1
         node.rotation.x += delta * ((hash % 5) + 1) * 0.1
         node.rotation.z += delta * ((hash % 5) + 1) * 0.1
         node.rotation.y += delta * ((hash % 5) + 1) * 0.1

@@ -8,6 +8,7 @@ import PorcelainBG from "components/Images/Porcelain_Background.png"
 import LoadingGif from "components/Images/loading.gif"
 import Logo from "components/Logo"
 import Cart from "components/Cart"
+import Footer from "components/Footer"
 import VideoBackground from "components/VideoBackground"
 import { ShopifyContext } from "services/shopify"
 
@@ -81,6 +82,7 @@ export default function Product(props) {
       <ProductDetails product={product} {...shopify} />
       <VideoBackground />
       <Cart />
+      <Footer />
     </Container>
   )
 }

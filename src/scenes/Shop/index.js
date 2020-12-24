@@ -16,7 +16,7 @@ import Landing from "../Landing"
 
 const LoadingText = styled.h1`
   width: 100%;
-  height: 100vh;
+  height: 100%;
   position: absolute;
   margin: 0;
   display: flex;
@@ -37,7 +37,22 @@ const Container = styled.div`
   // background: linear-gradient(rgba(0,0,0,0.7), rgb(35 0 68 / 80%));
   color: white;
   background-size: cover;
-  min-height: 100vh;
+  height: calc(100% - 50px);
+  box-sizing: border-box;
+  overflow-y: hidden;
+  overflow-x: scroll;
+`
+
+const ProductPage = styled.div`
+  width: 100vw;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  height: 100%;
+  margin: 0 auto;
+  max-width: 850px;
+  align-items: center;
+  flex-direction: column;
 `
 
 export default function Shop(props) {
@@ -53,7 +68,7 @@ export default function Shop(props) {
   }, [location])
 
   return (
-    <div>
+    <>
       {(!products || isLoading) && (
         <div>
           <FullScreenLoading />
@@ -63,17 +78,21 @@ export default function Shop(props) {
         </div>
       )}
       {products && (
-        <Container>
+        <>
           {location.search !== "?s" && <Landing setLoading={setLoading} />}
           {location.search !== "?s" && <LogoLandingPage />}
           {location.search === "?s" && <Logo />}
-          {products.map(product => (
-            <ProductListing product={product} key={product.handle} />
-          ))}
-          <VideoBackground />
-          <Cart />
-        </Container>
+          <Container>
+            <ProductPage>
+              {products.map(product => (
+                <ProductListing product={product} key={product.handle} />
+              ))}
+            </ProductPage>
+            <VideoBackground />
+            <Cart />
+          </Container>
+        </>
       )}
-    </div>
+    </>
   )
 }

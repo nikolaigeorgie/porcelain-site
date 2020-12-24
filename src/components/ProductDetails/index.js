@@ -146,6 +146,7 @@ export default function ProductDetails(props) {
       checkout.id,
       lineItemsToAdd
     )
+    localStorage.setItem("id", newCheckout.id)
     setCheckout(newCheckout)
     setCheckoutOpen("true")
   }

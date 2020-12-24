@@ -9,6 +9,10 @@ export default createGlobalStyle`
     font-family: 'Merit';
     src: url('merit4.ttf');
   }
+  
+  html, body, #root {
+    height: 100%;
+  }
 
   body {
     font-family: "Merit", Avenir, Lato, Roboto, sans-serif;
