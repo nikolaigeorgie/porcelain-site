@@ -1,7 +1,7 @@
 import React from "react"
 import styled, { keyframes } from "styled-components/macro"
 
-import PorcelainBG from "../Images/Porcelain_Background.png"
+// import PorcelainBG from "../Images/Porcelain_Background.png"
 
 const scrollGradient = keyframes`
   0% {

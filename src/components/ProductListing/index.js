@@ -69,7 +69,7 @@ const Subtitle = styled.h3`
 export default function ProductListing(props) {
   const { product } = props
 
-  const { images, title, handle } = product
+  const { images, handle } = product
   const { price } = product.variants[0]
 
   return (

@@ -6,6 +6,8 @@ import * as THREE from "three"
 import { useLoader, useFrame, useThree } from "react-three-fiber"
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader"
 
+var j
+
 export default function VoronWall(props) {
   const { clicked, setLoading } = props
   const { scene, raycaster, gl } = useThree()
@@ -53,6 +55,7 @@ export default function VoronWall(props) {
     setLoading(false)
   }
   const onLandingClick = () => {
+    console.log(j)
     if (animationState) {
       return
     }
@@ -106,6 +109,7 @@ export default function VoronWall(props) {
         node.rotation.x += delta * ((hash % 5) + 1) * 0.1
         node.rotation.z += delta * ((hash % 5) + 1) * 0.1
         node.rotation.y += delta * ((hash % 5) + 1) * 0.1
+        j = i
       }
     }
   })

@@ -140,7 +140,6 @@ const ControlSpacer = styled.div`
 `
 
 export default function Cart(props) {
-  const {} = props
   const {
     checkout,
     setCheckout,
