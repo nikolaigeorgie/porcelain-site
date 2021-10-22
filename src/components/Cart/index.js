@@ -99,9 +99,14 @@ const Footer = styled.div`
 
 const CartIcon = styled.div`
   position: fixed;
-  top: -20px;
+  top: 20px;
   right: 30px;
   z-index: 9;
+  `
+
+const CartImage = styled.img`
+height: 50px;
+width: 50px;
 `
 
 const CartIndicator = styled.div`
@@ -175,7 +180,8 @@ export default function Cart(props) {
           setCheckoutOpen("true")
         }}
       >
-        <svg
+        <CartImage src="/cart.png" />
+        {/* <svg
           width="117px"
           height="144px"
           viewBox="0 0 117 144"
@@ -206,7 +212,7 @@ export default function Cart(props) {
               </g>
             </g>
           </g>
-        </svg>
+        </svg> */}
         {lineItems && lineItems.length > 0 ? (
           <CartIndicator>{lineItems.length}</CartIndicator>
         ) : (
