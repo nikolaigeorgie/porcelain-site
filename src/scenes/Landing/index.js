@@ -15,7 +15,7 @@ export default function Landing(props) {
   const clicked = function() {
     numClicks++
 
-    if (numClicks > 3) {
+    if (numClicks > 8) {
       document
         .getElementsByClassName("canvas-container")[0]
         .classList.add("finished")
@@ -27,7 +27,7 @@ export default function Landing(props) {
 
   return (
     <div className="canvas-container">
-      {numClicks < 3 && (
+      {numClicks < 8 && (
         <Canvas
           gl={{
             outputEncoding: THREE.sRGBEncoding,

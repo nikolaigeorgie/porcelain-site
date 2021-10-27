@@ -68,7 +68,7 @@ export default function VoronWall(props) {
         }
       }
     }
-    if (numClicks <= 3) {
+    if (numClicks <= 8) {
       setTimeout(function() {
         animationState = false
       }, 50 + 50 * numClicks)
@@ -78,14 +78,14 @@ export default function VoronWall(props) {
       }, 3000)
     }
     clicked()
-    if (numClicks > 3) {
+    if (numClicks > 8) {
       console.log("removed event listener")
       document.removeEventListener("click", onLandingClick)
     }
   }
 
   useFrame(({ clock }, delta) => {
-    if (numClicks > 3) {
+    if (numClicks > 8) {
       for (let i = 0; i < Object.keys(nodes).length; i++) {
         const node = nodes[Object.keys(nodes)[i]]
         const hash = hashString(node.uuid)
