@@ -59,7 +59,7 @@ const BuyButton = styled.button`
   padding: 15px 5px;
   transition: 0.5s;
   text-align: center;
-  font-size: 18px;
+  font-size: 0.9em;
   border-radius: 30px;
   border: 2px solid white;
   box-shadow: 0 2px 4px rgb(0 0 0 / 0.6);
