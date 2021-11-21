@@ -51,7 +51,7 @@ export default function VoronWall(props) {
   let animationState = false
   let numClicks = 0
   const intersect = []
-  const furthestBack = isMobile ? 20 : 500
+  const furthestBack = isMobile ? 500 : 20
   if (nodes) {
     setLoading(false)
   }
