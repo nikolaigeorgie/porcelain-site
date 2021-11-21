@@ -5,6 +5,8 @@ import React, { useEffect } from "react"
 import * as THREE from "three"
 import { useLoader, useFrame, useThree } from "react-three-fiber"
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader"
+import {isMobile} from 'react-device-detect';
+
 
 var j
 
@@ -12,7 +14,7 @@ export default function VoronWall(props) {
   const { clicked, setLoading } = props
   const { scene, raycaster, gl } = useThree()
 
-  const { nodes } = useLoader(GLTFLoader, "/porcelain7.glb")
+  const { nodes } = useLoader(GLTFLoader, isMobile ? "/porcelain_mobile.glb": "/porcelain7.glb")
 
   let mesh
   console.log(nodes)
@@ -32,14 +34,13 @@ export default function VoronWall(props) {
     }
 
     scene.add(mesh)
-    const locScale = window.innerWidth > 800 ? 15 : 10
+    const locScale = isMobile ? 1 : window.innerWidth > 800 ? 15 : 10
     mesh.scale.set(locScale, locScale, locScale)
-    mesh.position.y = 5.3 // into the page
-    mesh.position.z = 0 // up and down
-    mesh.position.x = 0 // left and right
+    mesh.position.y = isMobile ? -100.3 : 5.3
+    mesh.position.z = isMobile ? 80 : 130 // up and down
+    mesh.position.x = isMobile ? 0 : 150 // left and right
     mesh.rotation.x = -Math.PI / 2
     mesh.rotation.y = Math.PI
-    // mesh.rotation.z = Math.PI
 
     if (mesh.material) {
       mesh.material.map.minFilter = THREE.LinearFilter
@@ -50,7 +51,7 @@ export default function VoronWall(props) {
   let animationState = false
   let numClicks = 0
   const intersect = []
-  const furthestBack = 20
+  const furthestBack = isMobile ? 20 : 500
   if (nodes) {
     setLoading(false)
   }
