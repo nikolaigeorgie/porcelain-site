@@ -5,6 +5,8 @@ import React, { useEffect } from "react"
 import * as THREE from "three"
 import { useLoader, useFrame, useThree } from "react-three-fiber"
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader"
+import {isMobile} from 'react-device-detect';
+
 
 var j
 
@@ -38,9 +40,9 @@ export default function VoronWall(props) {
     mesh.position.y = mobile ? -100 : 5.3 // into the page
     mesh.position.z = 0 // up and down
     mesh.position.x = 0 // left and right
+
     mesh.rotation.x = -Math.PI / 2
     mesh.rotation.y = Math.PI
-    // mesh.rotation.z = Math.PI
 
     if (mesh.material) {
       mesh.material.map.minFilter = THREE.LinearFilter
