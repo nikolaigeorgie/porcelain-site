@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3aa2cc58-121e-4492-886a-acaeb491ca50" name="Changes" comment="" />
+    <list default="true" id="3aa2cc58-121e-4492-886a-acaeb491ca50" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/VoronWall/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/VoronWall/index.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -49,7 +52,9 @@
       <workItem from="1637463461725" duration="1878000" />
       <workItem from="1637465443629" duration="4431000" />
       <workItem from="1637635076891" duration="2856000" />
-      <workItem from="1637718894970" duration="3324000" />
+      <workItem from="1637718894970" duration="4071000" />
+      <workItem from="1637796966837" duration="208000" />
+      <workItem from="1637891036791" duration="553000" />
     </task>
     <servers />
   </component>
