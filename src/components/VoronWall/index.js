@@ -6,11 +6,14 @@ import * as THREE from "three"
 import { useLoader, useFrame, useThree } from "react-three-fiber"
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader"
 
+var j
+
 export default function VoronWall(props) {
   const { clicked, setLoading } = props
   const { scene, raycaster, gl } = useThree()
 
-  const { nodes } = useLoader(GLTFLoader, "/porcelain7.glb")
+  const mobile = window.innerWidth < 800
+  const { nodes } = !mobile  ? useLoader(GLTFLoader, "/porcelain7.glb") : useLoader(GLTFLoader, "/porcelain_fracture.glb")
 
   let mesh
   console.log(nodes)
@@ -30,9 +33,9 @@ export default function VoronWall(props) {
     }
 
     scene.add(mesh)
-    const locScale = window.innerWidth > 800 ? 15 : 10
+    const locScale = mobile ? 0.1 : window.innerWidth > 800 ? 15 : 0.1
     mesh.scale.set(locScale, locScale, locScale)
-    mesh.position.y = 5.3 // into the page
+    mesh.position.y = mobile ? 0 : 5.3 // into the page
     mesh.position.z = 0 // up and down
     mesh.position.x = 0 // left and right
     mesh.rotation.x = -Math.PI / 2
@@ -48,11 +51,12 @@ export default function VoronWall(props) {
   let animationState = false
   let numClicks = 0
   const intersect = []
-  const furthestBack = 20
+  const furthestBack = mobile  ? 100: 20
   if (nodes) {
     setLoading(false)
   }
   const onLandingClick = () => {
+    console.log(j)
     if (animationState) {
       return
     }
@@ -65,7 +69,7 @@ export default function VoronWall(props) {
         }
       }
     }
-    if (numClicks <= 3) {
+    if (numClicks <= 8) {
       setTimeout(function() {
         animationState = false
       }, 50 + 50 * numClicks)
@@ -75,14 +79,14 @@ export default function VoronWall(props) {
       }, 3000)
     }
     clicked()
-    if (numClicks > 3) {
+    if (numClicks > 8) {
       console.log("removed event listener")
       document.removeEventListener("click", onLandingClick)
     }
   }
 
   useFrame(({ clock }, delta) => {
-    if (numClicks > 3) {
+    if (numClicks > 8) {
       for (let i = 0; i < Object.keys(nodes).length; i++) {
         const node = nodes[Object.keys(nodes)[i]]
         const hash = hashString(node.uuid)
@@ -106,6 +110,7 @@ export default function VoronWall(props) {
         node.rotation.x += delta * ((hash % 5) + 1) * 0.1
         node.rotation.z += delta * ((hash % 5) + 1) * 0.1
         node.rotation.y += delta * ((hash % 5) + 1) * 0.1
+        j = i
       }
     }
   })
