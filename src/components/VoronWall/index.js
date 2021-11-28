@@ -13,7 +13,7 @@ export default function VoronWall(props) {
   const { scene, raycaster, gl } = useThree()
 
   const mobile = window.innerWidth < 800
-  const { nodes } = !mobile  ? useLoader(GLTFLoader, "/porcelain7.glb") : useLoader(GLTFLoader, "/Porcelain_fracture.glb")
+  const { nodes } = !mobile  ? useLoader(GLTFLoader, "/porcelain7.glb") : useLoader(GLTFLoader, "/porcelain_fracture.glb")
 
   let mesh
   console.log(nodes)
@@ -33,9 +33,9 @@ export default function VoronWall(props) {
     }
 
     scene.add(mesh)
-    const locScale = mobile ? 1 : window.innerWidth > 800 ? 15 : 10
+    const locScale = mobile ? 0.1 : window.innerWidth > 800 ? 15 : 0.1
     mesh.scale.set(locScale, locScale, locScale)
-    mesh.position.y = mobile ? -100 : 5.3 // into the page
+    mesh.position.y = mobile ? 0 : 5.3 // into the page
     mesh.position.z = 0 // up and down
     mesh.position.x = 0 // left and right
     mesh.rotation.x = -Math.PI / 2
@@ -51,7 +51,7 @@ export default function VoronWall(props) {
   let animationState = false
   let numClicks = 0
   const intersect = []
-  const furthestBack = mobile  ? 800: 20
+  const furthestBack = mobile  ? 100: 20
   if (nodes) {
     setLoading(false)
   }
