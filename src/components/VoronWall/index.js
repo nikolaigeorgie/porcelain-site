@@ -13,7 +13,7 @@ export default function VoronWall(props) {
   const { scene, raycaster, gl } = useThree()
 
   const mobile = window.innerWidth < 800
-  const { nodes } = !mobile  ? useLoader(GLTFLoader, "/porcelain7.glb") : useLoader(GLTFLoader, "/porcelain_fracture.glb")
+  const { nodes } = !mobile  ? useLoader(GLTFLoader, "/porcelain7.glb") : useLoader(GLTFLoader, "/mobilefracture.glb")
 
   let mesh
   console.log(nodes)

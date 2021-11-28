@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="3aa2cc58-121e-4492-886a-acaeb491ca50" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/VoronWall/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/VoronWall/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +55,7 @@
       <workItem from="1637718894970" duration="4071000" />
       <workItem from="1637796966837" duration="208000" />
       <workItem from="1637891036791" duration="2553000" />
-      <workItem from="1638067744825" duration="11000" />
+      <workItem from="1638067744825" duration="728000" />
     </task>
     <servers />
   </component>
