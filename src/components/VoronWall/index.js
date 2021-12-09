@@ -33,7 +33,7 @@ export default function VoronWall(props) {
     }
 
     scene.add(mesh)
-    const locScale = mobile ? 0.05 : window.innerWidth > 800 ? 15 : 0.1
+    const locScale = mobile ? 0.06 : window.innerWidth > 800 ? 15 : 0.1
     mesh.scale.set(locScale, locScale, locScale)
     mesh.position.y = mobile ? 0 : 5.3 // into the page
     mesh.position.z = 0 // up and down
